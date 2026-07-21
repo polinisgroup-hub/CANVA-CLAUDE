@@ -14,7 +14,8 @@ diseños profesionales de marketing digital con Claude + Canva.
 ## Regenerar el PDF
 ```bash
 chromium --headless --no-sandbox --no-pdf-header-footer \
+  --virtual-time-budget=20000 --run-all-compositor-stages-before-draw \
   --print-to-pdf=build/guia.pdf "file://$PWD/build/guia.html"
 ```
 
-Marca: naranja `#D97757`, teal `#008080`, púrpura `#4910bc` · Tipografías: Anton + Poppins · @lindamarmercado
+Marca: naranja `#D97757`, teal `#008080`, púrpura `#4910bc` · Tipografías: Anton + Poppins (+ Pacifico para el wordmark Canva) · Logos Claude y Canva reconstruidos en SVG vectorial · @lindamarmercado
