@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Diseña en Minutos — Claude + Canva</title>
+<link rel="stylesheet" href="fonts/fonts-embedded.css">
+<style>
+  :root{
+    --orange:#D97757;
+    --teal:#008080;
+    --purple:#4910bc;
+    --ink:#26262b;
+    --ink-soft:#55555f;
+    --pink:#fbe9ec;
+    --pink-line:#f2c9d1;
+    --paper:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{size:8.5in 11in;margin:0;}
+  html,body{background:#e9e9ee;}
+  body{font-family:'Poppins',sans-serif;color:var(--ink);}
+
+  .page{
+    position:relative;
+    width:8.5in;height:11in;
+    background:var(--paper);
+    overflow:hidden;
+    page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto;}
+  .pad{padding:0.72in 0.7in 0.9in;height:100%;display:flex;flex-direction:column;}
+
+  /* ---------- Typography ---------- */
+  .anton{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:.5px;line-height:.98;}
+  h1.title{font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.92;letter-spacing:.5px;}
+  p{line-height:1.5;}
+
+  /* ---------- Pill tag ---------- */
+  .tag{
+    display:inline-block;background:var(--orange);color:#fff;
+    font-weight:700;font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;
+    padding:6px 15px;border-radius:40px;
+  }
+  .tag.teal{background:var(--teal);}
+  .tag.purple{background:var(--purple);}
+
+  .section-head{font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--ink);letter-spacing:.5px;}
+
+  /* ---------- Step number badge ---------- */
+  .stepnum{
+    font-family:'Anton',sans-serif;color:#fff;background:var(--teal);
+    width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:24px;flex:0 0 44px;
+  }
+  .stepnum.purple{background:var(--purple);}
+  .stepnum.orange{background:var(--orange);}
+
+  /* ---------- Boxes ---------- */
+  .box-black{background:#1c1c22;color:#fff;border-radius:12px;padding:16px 18px;}
+  .box-black .lbl{color:var(--orange);font-weight:800;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+  .box-black .code{font-family:'Poppins';font-weight:400;font-size:11.5px;line-height:1.55;color:#f3f3f5;}
+  .box-black .code b{color:#fff;font-weight:600;}
+  .box-black .hi{color:var(--orange);font-weight:600;}
+
+  .box-pink{background:var(--pink);border:1px solid var(--pink-line);border-radius:12px;padding:14px 18px;}
+  .box-pink .lbl{color:var(--purple);font-weight:800;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:8px;}
+
+  .callout{
+    background:var(--teal);color:#fff;border-radius:12px;padding:13px 18px;
+    font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:17px;text-align:center;
+  }
+  .callout.purple{background:var(--purple);}
+  .callout.orange{background:var(--orange);}
+
+  /* ---------- Lists ---------- */
+  ul{list-style:none;}
+  .chk li,.box-list li{position:relative;padding-left:26px;margin-bottom:9px;font-size:11.5px;line-height:1.4;color:var(--ink);}
+  /* checkbox (empty square) */
+  .box-list li::before{
+    content:"";position:absolute;left:0;top:1px;width:14px;height:14px;
+    border:2px solid var(--teal);border-radius:3px;
+  }
+  /* teal checkmark */
+  .chk li::before{
+    content:"";position:absolute;left:1px;top:2px;width:12px;height:7px;
+    border-left:2.6px solid var(--teal);border-bottom:2.6px solid var(--teal);
+    transform:rotate(-45deg);
+  }
+  .num-list{counter-reset:n;}
+  .num-list li{position:relative;padding-left:24px;margin-bottom:7px;font-size:11px;line-height:1.42;color:var(--ink-soft);}
+  .num-list li::before{
+    counter-increment:n;content:counter(n);position:absolute;left:0;top:0;
+    color:var(--orange);font-weight:800;font-size:11px;
+  }
+  .num-list li b{color:var(--ink);font-weight:600;}
+
+  .plain li{position:relative;padding-left:16px;margin-bottom:6px;font-size:11px;line-height:1.4;color:var(--ink-soft);}
+  .plain li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--orange);}
+
+  /* ---------- Footer ---------- */
+  .footer{
+    position:absolute;left:0.7in;right:0.7in;bottom:0.42in;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:9px;letter-spacing:.5px;color:#9a9aa6;border-top:1px solid #ececf0;padding-top:9px;
+  }
+  .footer .pg{font-family:'Anton',sans-serif;color:var(--orange);font-size:13px;letter-spacing:1px;}
+  .footer .handle{font-weight:600;color:var(--ink-soft);}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .card{border:1px solid #ececf0;border-radius:12px;padding:15px 16px;background:#fff;}
+  .card .ctitle{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+
+  .logo-chip{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:0 0 34px;}
+
+  /* ===== COVER ===== */
+  .cover{
+    background:linear-gradient(150deg,var(--teal) 0%,#1f5a8a 42%,var(--purple) 100%);
+    color:#fff;
+  }
+  .cover .pad{align-items:center;text-align:center;padding-top:1.15in;}
+  .cover-logos{display:flex;align-items:center;gap:20px;margin-bottom:52px;}
+  .cover-logos .plus{font-family:'Anton',sans-serif;font-size:30px;color:#ffffff;opacity:.9;}
+  .cover .kicker{font-weight:600;letter-spacing:4px;font-size:11px;text-transform:uppercase;color:#d9f2f0;margin-bottom:16px;}
+  .cover h1{font-size:82px;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.15);}
+  .cover .sub{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:30px;letter-spacing:1px;margin-top:6px;color:#ffd9cc;}
+  .cover .desc{max-width:5in;font-size:13.5px;line-height:1.6;color:#eef6ff;margin-top:28px;font-weight:300;}
+  .cover .cta{
+    margin-top:44px;background:var(--orange);color:#fff;font-family:'Anton',sans-serif;
+    font-size:19px;letter-spacing:1.5px;text-transform:uppercase;padding:15px 46px;border-radius:50px;
+    box-shadow:0 10px 30px rgba(217,119,87,.45);
+  }
+  .cover .handle-b{position:absolute;bottom:0.7in;left:0;right:0;text-align:center;font-weight:600;letter-spacing:2px;font-size:12px;color:#eafffd;}
+  .cover .badge{position:absolute;top:0.7in;right:0.7in;font-size:8.5px;letter-spacing:2px;font-weight:700;color:#cfeeeb;border:1px solid rgba(255,255,255,.4);padding:5px 12px;border-radius:30px;text-transform:uppercase;}
+
+  .grid5{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+  .fmt{border:1px solid #ececf0;border-left:4px solid var(--teal);border-radius:8px;padding:10px 13px;}
+  .fmt .n{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.3px;text-transform:uppercase;}
+  .fmt .d{font-size:10px;color:var(--ink-soft);margin-top:2px;}
+  .fmt:nth-child(2){border-left-color:var(--purple);}
+  .fmt:nth-child(3){border-left-color:var(--orange);}
+  .fmt:nth-child(4){border-left-color:var(--teal);}
+  .fmt:nth-child(5){border-left-color:var(--purple);}
+
+  /* prompt cards (pages 5-6) */
+  .prompt{border:1px solid #ececf0;border-radius:13px;padding:14px 16px;margin-bottom:13px;}
+  .prompt .ph{display:flex;align-items:flex-start;gap:11px;margin-bottom:9px;}
+  .prompt .pn{font-family:'Anton',sans-serif;background:var(--purple);color:#fff;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 30px;}
+  .prompt:nth-child(even) .pn{background:var(--teal);}
+  .prompt .pt{font-family:'Anton',sans-serif;font-size:15px;text-transform:uppercase;letter-spacing:.3px;line-height:1.05;}
+  .prompt .theme{font-size:10px;color:var(--orange);font-weight:600;margin-top:2px;}
+  .prompt .pbody{background:#1c1c22;color:#f3f3f5;border-radius:9px;padding:11px 13px;font-size:10.3px;line-height:1.5;}
+  .prompt .pmeta{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap;}
+  .chipm{font-size:9px;font-weight:600;padding:5px 11px;border-radius:30px;letter-spacing:.3px;}
+  .chipm.res{background:var(--pink);color:var(--purple);border:1px solid var(--pink-line);}
+  .chipm.time{background:#eafaf7;color:var(--teal);border:1px solid #c8ece6;}
+
+  .lead{font-size:12px;color:var(--ink-soft);line-height:1.55;}
+  .mini{font-size:10.5px;color:var(--ink-soft);}
+  .divider{height:1px;background:#ececf0;margin:14px 0;}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="page cover">
+  <div class="badge">Guía Descargable · PDF</div>
+  <div class="pad">
+    <div class="cover-logos">
+      <!-- Claude mark -->
+      <div class="logo-chip" style="background:var(--orange);width:52px;height:52px;border-radius:14px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+          <g stroke="#fff" stroke-width="2.1" stroke-linecap="round">
+            <line x1="12" y1="3" x2="12" y2="21"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="5.5" y1="5.5" x2="18.5" y2="18.5"/>
+            <line x1="18.5" y1="5.5" x2="5.5" y2="18.5"/>
+          </g>
+        </svg>
+      </div>
+      <span class="plus">+</span>
+      <!-- Canva mark -->
+      <div class="logo-chip" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#00c4cc,#7d2ae8);">
+        <span style="font-family:'Anton';color:#fff;font-size:30px;line-height:1;">C</span>
+      </div>
+    </div>
+
+    <div class="kicker">Claude&nbsp;AI &nbsp;+&nbsp; Canva</div>
+    <h1 class="title" style="font-size:82px;">DISEÑA<br>EN MINUTOS</h1>
+    <div class="sub">Con Claude + Canva</div>
+    <p class="desc">La guía paso a paso para crear diseños profesionales de marketing digital sin ser diseñador.</p>
+    <div class="cta">Guía Gratuita</div>
+  </div>
+  <div class="handle-b">@lindamarmercado</div>
+</section>
+
+<!-- ============ PAGE 2 — LA RUTA COMPLETA ============ -->
+<section class="page">
+  <div class="pad">
+    <span class="tag">Paso a paso</span>
+    <h1 class="section-head" style="font-size:40px;margin-top:12px;">La ruta completa</h1>
+    <div class="divider" style="margin:14px 0 18px;"></div>
+
+    <!-- Step 1 -->
+    <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;">
+      <div class="stepnum">1</div>
+      <div style="flex:1;">
+        <div class="anton" style="font-size:17px;">Lo que necesitas <span style="color:var(--orange);font-size:12px;">· 5 min</span></div>
+        <div class="two-col" style="gap:8px 26px;margin-top:9px;align-items:start;">
+          <ul class="box-list">
+            <li>Cuenta <b>Claude</b> — claude.ai</li>
+            <li>Cuenta <b>Canva</b> — canva.com</li>
+          </ul>
+          <ul class="box-list">
+            <li>Acceso a <b>Claude API</b></li>
+            <li>Internet estable</li>
+          </ul>
+        </div>
+        <div class="callout" style="margin-top:12px;font-size:15px;">Eso es todo. En serio.</div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="display:flex;gap:14px;align-items:flex-start;">
+      <div class="stepnum purple">2</div>
+      <div style="flex:1;">
+        <div class="anton" style="font-size:17px;">Conecta Claude con Canva <span style="color:var(--orange);font-size:12px;">· 5 min</span></div>
+
+        <div class="two-col" style="margin-top:11px;">
+          <div class="card">
+            <div class="ctitle"><span class="dot" style="background:var(--orange);"></span>A · Tu API Key de Claude</div>
+            <ul class="num-list">
+              <li>Ve a <b>claude.ai</b> → Inicia sesión</li>
+              <li>Clic en tu perfil (abajo izq.) → <b>Settings</b></li>
+              <li>Busca <b>API</b> → clic en <b>Create New API Key</b></li>
+              <li><b>Copia</b> la clave (solo aparece una vez)</li>
+              <li><b>No compartas</b> esta clave con nadie</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="ctitle"><span class="dot" style="background:var(--teal);"></span>B · Conecta en Canva</div>
+            <ul class="num-list">
+              <li>Ve a <b>canva.com</b> → Inicia sesión</li>
+              <li>Perfil (abajo izq.) → <b>Apps &amp; Integrations</b></li>
+              <li>Busca <b>Claude AI Integration</b></li>
+              <li>Clic en <b>Connect</b></li>
+              <li><b>Pega</b> tu API Key</li>
+              <li>Clic en <b>Confirm</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box-pink" style="margin-top:12px;">
+          <div class="lbl">Verificación</div>
+          <div class="two-col" style="gap:6px 26px;">
+            <ul class="chk">
+              <li>Verás <b>“Connected”</b> (botón verde)</li>
+              <li>Aparecerá <b>“Generate with Claude”</b></li>
+            </ul>
+            <ul class="chk">
+              <li style="font-weight:700;color:var(--purple);">¡LISTO!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="pg">02</span><span class="handle">@lindamarmercado</span></div>
+</section>
+
+<!-- ============ PAGE 3 — PRIMER DISEÑO ============ -->
+<section class="page">
+  <div class="pad">
+    <span class="tag purple">Crea tu primer diseño · 10 min</span>
+    <h1 class="section-head" style="font-size:38px;margin-top:12px;">La fórmula del<br>prompt perfecto</h1>
+    <div class="divider" style="margin:16px 0 18px;"></div>
+
+    <div class="box-black">
+      <div class="lbl">Estructura</div>
+      <div class="code">Crea <span class="hi">[TIPO]</span> sobre <span class="hi">[TEMA]</span> en tono <span class="hi">[TONO]</span> usando colores <span class="hi">[TUS COLORES]</span>. Incluye <span class="hi">[DETALLE 1]</span> y <span class="hi">[DETALLE 2]</span>.</div>
+    </div>
+
+    <div class="box-black" style="margin-top:14px;">
+      <div class="lbl">Ejemplo completo</div>
+      <div class="code">Diseña un <b>post cuadrado (1080×1080px)</b> sobre <b>“Las 5 métricas que todo marketer digital debe revisar cada semana”</b> en tono profesional pero cercano. Usa tus colores de marca. Incluye un título impactante, íconos relacionados a analítica, y fondo con degradado suave.</div>
+    </div>
+
+    <div style="margin-top:26px;">
+      <div class="anton" style="font-size:22px;">Lo que puedes crear</div>
+      <p class="mini" style="margin:4px 0 14px;">Un mismo flujo, cinco formatos listos para publicar.</p>
+      <div class="grid5">
+        <div class="fmt"><div class="n">Posts estáticos</div><div class="d">1080 × 1080 px · feed</div></div>
+        <div class="fmt"><div class="n">Carruseles 5+ slides</div><div class="d">1080 × 1350 px · vertical</div></div>
+        <div class="fmt"><div class="n">Stories</div><div class="d">1080 × 1920 px · pantalla completa</div></div>
+        <div class="fmt"><div class="n">Banners</div><div class="d">1200 × 300 px · horizontal</div></div>
+        <div class="fmt" style="grid-column:1 / -1;"><div class="n">Miniaturas</div><div class="d">1280 × 720 px · YouTube / thumbnails</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="pg">03</span><span class="handle">@lindamarmercado</span></div>
+</section>
+
+<!-- ============ PAGE 4 — EDITA + UN MES ============ -->
+<section class="page">
+  <div class="pad">
+    <span class="tag teal">Edita en Canva · 10 min</span>
+    <h1 class="section-head" style="font-size:33px;margin-top:12px;">Ajusta y exporta</h1>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="card">
+        <div class="ctitle"><span class="dot" style="background:var(--orange);"></span>Qué cambiar</div>
+        <ul class="plain">
+          <li>Textos y mensajes</li>
+          <li>Colores <span class="mini">(mantén tu paleta)</span></li>
+          <li>Imágenes propias</li>
+          <li>Elementos y detalles</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="dot" style="background:var(--teal);"></span>Tips Pro</div>
+        <ul class="plain">
+          <li>Máximo <b>3 colores</b></li>
+          <li>Máximo <b>2 fuentes</b></li>
+          <li>Espacios en blanco</li>
+          <li>Alineación consistente</li>
+          <li>Contraste legible</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box-pink" style="margin-top:13px;">
+      <div class="lbl">Exportar</div>
+      <p style="font-size:11.5px;color:var(--ink);"><b>PNG</b> (con transparencia) o <b>JPG</b> · calidad máxima · clic en <b>“Download”</b>.</p>
+    </div>
+
+    <div class="divider" style="margin:20px 0 16px;"></div>
+
+    <span class="tag">Un mes de contenido en 1 tarde · 60 min</span>
+    <h1 class="section-head" style="font-size:30px;margin-top:11px;">Produce en lote</h1>
+
+    <div class="two-col" style="margin-top:13px;">
+      <div class="card">
+        <div class="ctitle"><span class="dot" style="background:var(--purple);"></span>Proceso</div>
+        <ul class="num-list">
+          <li>Define <b>4 temas</b> de marketing digital</li>
+          <li>Crea <b>1 prompt maestro</b> por tema</li>
+          <li>Pide <b>variaciones</b> a Claude</li>
+          <li>Personaliza en Canva</li>
+          <li>Exporta todo</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ctitle"><span class="dot" style="background:var(--orange);"></span>Fórmula de consistencia</div>
+        <ul class="plain">
+          <li>Mismos colores</li>
+          <li>Mismas fuentes</li>
+          <li>Mismos márgenes</li>
+          <li>Misma estructura visual</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout purple" style="margin-top:14px;">20–30 diseños profesionales listos en 1 tarde</div>
+  </div>
+  <div class="footer"><span class="pg">04</span><span class="handle">@lindamarmercado</span></div>
+</section>
+
+<!-- ============ PAGE 5 — PROMPTS 1-3 ============ -->
+<section class="page">
+  <div class="pad">
+    <span class="tag">Ejemplos de uso reales</span>
+    <h1 class="section-head" style="font-size:40px;margin-top:12px;">6 prompts listos</h1>
+    <p class="lead" style="margin-top:6px;">Copia, pega y adapta. Cada uno con su resultado y tiempo estimado.</p>
+    <div class="divider" style="margin:15px 0 16px;"></div>
+
+    <div class="prompt">
+      <div class="ph">
+        <div class="pn">1</div>
+        <div><div class="pt">Carrusel educativo · 8 slides</div>
+        <div class="theme">Tema: 8 herramientas de IA que todo marketer debe conocer</div></div>
+      </div>
+      <div class="pbody">Diseña un carrusel de 8 slides educativo. Slide 1 = Intro, Slides 2–8 = 1 herramienta cada una. Usa títulos destacados, descripciones claras, fondo con degradado sutil.</div>
+      <div class="pmeta"><span class="chipm res">Resultado: 8 slides listas</span><span class="chipm time">⏱ 15 min</span></div>
+    </div>
+
+    <div class="prompt">
+      <div class="ph">
+        <div class="pn">2</div>
+        <div><div class="pt">Post motivacional único</div>
+        <div class="theme">Tema: el marketing digital no es magia, es estrategia</div></div>
+      </div>
+      <div class="pbody">Crea un post cuadrado motivacional con la frase central en tipografía grande, ícono simple, diseño minimalista pero impactante.</div>
+      <div class="pmeta"><span class="chipm res">Resultado: 1 post viral-ready</span><span class="chipm time">⏱ 5 min</span></div>
+    </div>
+
+    <div class="prompt">
+      <div class="ph">
+        <div class="pn">3</div>
+        <div><div class="pt">Banner promocional</div>
+        <div class="theme">Tema: promocionar una masterclass o lead magnet gratuito</div></div>
+      </div>
+      <div class="pbody">Diseña un banner horizontal (1200×300px) con título, subtítulo, fecha/hora destacada y botón de registro.</div>
+      <div class="pmeta"><span class="chipm res">Resultado: banner para LinkedIn, Facebook, Instagram</span><span class="chipm time">⏱ 10 min</span></div>
+    </div>
+  </div>
+  <div class="footer"><span class="pg">05</span><span class="handle">@lindamarmercado</span></div>
+</section>
+
+<!-- ============ PAGE 6 — PROMPTS 4-6 ============ -->
+<section class="page">
+  <div class="pad">
+    <span class="tag purple">Ejemplos de uso reales</span>
+    <h1 class="section-head" style="font-size:34px;margin-top:12px;">…y 3 más para escalar</h1>
+    <div class="divider" style="margin:15px 0 16px;"></div>
+
+    <div class="prompt">
+      <div class="ph">
+        <div class="pn">4</div>
+        <div><div class="pt">Serie de 10 stories</div>
+        <div class="theme">Tema: cómo armar una estrategia de contenido en 10 pasos</div></div>
+      </div>
+      <div class="pbody">Crea 10 stories numeradas del 1 al 10 con progresión visual y texto conciso.</div>
+      <div class="pmeta"><span class="chipm res">Resultado: 10 stories con historia completa</span><span class="chipm time">⏱ 20 min</span></div>
+    </div>
+
+    <div class="prompt">
+      <div class="ph">
+        <div class="pn">5</div>
+        <div><div class="pt">Anuncio de producto / servicio</div>
+        <div class="theme">Tema: promocionar un servicio de marketing digital</div></div>
+      </div>
+      <div class="pbody">Diseña un post con nombre destacado, 3 beneficios con íconos, precio claro y CTA de compra.</div>
+      <div class="pmeta"><span class="chipm res">Resultado: post de conversión optimizado</span><span class="chipm time">⏱ 12 min</span></div>
+    </div>
+
+    <div class="prompt">
+      <div class="ph">
+        <div class="pn">6</div>
+        <div><div class="pt">Carrusel de testimonios</div>
+        <div class="theme">Tema: social proof de clientes</div></div>
+      </div>
+      <div class="pbody">Crea un carrusel de 5 slides con testimonio, nombre, cargo, foto pequeña e íconos de estrellas.</div>
+      <div class="pmeta"><span class="chipm res">Resultado: 5 slides de testimonios</span><span class="chipm time">⏱ 15 min</span></div>
+    </div>
+
+    <div class="box-pink" style="margin-top:6px;">
+      <div class="lbl">Recuerda</div>
+      <p style="font-size:11.5px;color:var(--ink);">Cambia el <b>tema</b> y los <b>detalles</b> entre corchetes y tendrás un prompt nuevo. La estructura ya funciona — tú solo la adaptas.</p>
+    </div>
+  </div>
+  <div class="footer"><span class="pg">06</span><span class="handle">@lindamarmercado</span></div>
+</section>
+
+<!-- ============ PAGE 7 — CIERRE ============ -->
+<section class="page">
+  <div class="pad">
+    <span class="tag">Tips finales + cierre</span>
+    <h1 class="section-head" style="font-size:42px;margin-top:12px;">Antes de empezar</h1>
+    <div class="divider" style="margin:15px 0 16px;"></div>
+
+    <div class="two-col">
+      <div>
+        <div class="anton" style="font-size:17px;color:var(--purple);margin-bottom:9px;">Hacks rápidos</div>
+        <ul class="num-list">
+          <li>Pide variaciones: <b>“Hazlo más [atributo]”</b></li>
+          <li>Usa referencias de marcas conocidas</li>
+          <li>Crea templates duplicando lo que funciona</li>
+          <li>Prueba diferentes prompts</li>
+          <li>Mantén consistencia siempre</li>
+        </ul>
+      </div>
+      <div>
+        <div class="anton" style="font-size:17px;color:var(--teal);margin-bottom:9px;">Troubleshooting</div>
+        <ul class="box-list">
+          <li>No genera lo que quiero → <b>sé más específico</b></li>
+          <li>La conexión falla → <b>recarga Canva</b>, verifica la API Key</li>
+          <li>Diseños genéricos → <b>pide referencias</b> y detalles visuales</li>
+          <li>¿Puedo vender esto? → <b>Sí</b>, los diseños son tuyos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box-pink" style="margin-top:18px;">
+      <div class="lbl">Próximos pasos</div>
+      <div class="two-col" style="gap:6px 26px;">
+        <ul class="chk">
+          <li>Entra a nuestra comunidad de <b>WhatsApp</b></li>
+          <li>Acceso a <b>más prompts</b> listos para usar</li>
+        </ul>
+        <ul class="chk">
+          <li><b>Masterclass gratuita</b> próximamente</li>
+          <li>Redes: <b>@lindamarmercado</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="flex:1;"></div>
+
+    <div style="background:linear-gradient(135deg,var(--teal),var(--purple));border-radius:16px;padding:30px 30px;text-align:center;color:#fff;">
+      <div class="anton" style="font-size:27px;line-height:1.05;">“No necesitas ser diseñador<br>para tener un feed profesional.<br><span style="color:#ffd9cc;">Necesitas empezar.”</span></div>
+      <div style="margin-top:16px;font-weight:600;letter-spacing:2px;font-size:12px;color:#eafffd;">@lindamarmercado</div>
+    </div>
+  </div>
+  <div class="footer"><span class="pg">07</span><span class="handle">@lindamarmercado</span></div>
+</section>
+
+</body>
+</html>
