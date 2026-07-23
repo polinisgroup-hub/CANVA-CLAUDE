@@ -75,5 +75,13 @@ kit-de-marca/
    (`.checkbox`) y `.box-result`.
 3. **Pasos 2 y 3** (tipografías y logo) en `.two-col`, cada uno con `.pill-tag`,
    checklist y `.box-formula` con un mini-framework.
-4. **AFIANZA** — cómo usar la guía como plantilla + checklist final con
-   `.checkmark` en teal.
+4. **AFIANZA** — vista previa del kit (logo, paleta con HEX, tipografía y estilo
+   de imágenes, todo en CSS), checklist final con `.checkmark` en teal y un botón
+   **"Usar la plantilla"** enlazado a la plantilla de Canva.
+
+## Plantilla de Canva
+
+El botón de la página 4 apunta a la plantilla editable de Canva. El enlace se
+define en `generar_pdf.py` con la constante `CANVA_TEMPLATE_URL`
+(actualmente `https://canva.link/irjtxfu8xkdlqca`); cámbialo ahí si necesitas
+otro enlace y vuelve a ejecutar el script.
