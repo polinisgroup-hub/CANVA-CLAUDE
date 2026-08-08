@@ -42,17 +42,23 @@ export interface MagicCard {
  * Canva Magic Studio (título grande + degradado + motivo), no una captura
  * repetida. Rotación/offset/scale fijos para el efecto de piezas flotando.
  */
+// Ruta base de los recortes reales. Coloca los archivos en
+// public/assets/canva-magic/ con estos nombres exactos (.jpg).
+const A = '/assets/canva-magic'
+
 export const magicCards: MagicCard[] = [
-  { id: 'magic-animate', title: 'Magic\nAnimate', icon: Wand2, gradient: ['#9333EA', '#C026D3'], textTone: 'light', rotation: -2, offsetY: -8, scale: 0.98 },
-  { id: 'grab-text', title: 'Grab Text', icon: ScanText, gradient: ['#F97316', '#FBBF24'], textTone: 'dark', rotation: 1.5, offsetY: 4, scale: 1 },
-  { id: 'background-remover', title: 'Background\nRemover', icon: Scissors, gradient: ['#7DD3FC', '#BAE6FD'], textTone: 'dark', rotation: -1, offsetY: -3, scale: 1.02 },
+  { id: 'magic-animate', title: 'Magic\nAnimate', icon: Wand2, gradient: ['#9333EA', '#C026D3'], textTone: 'light', rotation: -2, offsetY: -8, scale: 0.98, image: `${A}/magic-animate.jpg` },
+  { id: 'grab-text', title: 'Grab Text', icon: ScanText, gradient: ['#F97316', '#FBBF24'], textTone: 'dark', rotation: 1.5, offsetY: 4, scale: 1, image: `${A}/grab-text.jpg` },
+  { id: 'background-remover', title: 'Background\nRemover', icon: Scissors, gradient: ['#7DD3FC', '#BAE6FD'], textTone: 'dark', rotation: -1, offsetY: -3, scale: 1.02, image: `${A}/background-remover.jpg` },
+  { id: 'magic-edit', title: 'Magic\nEdit', icon: Brush, gradient: ['#DB2777', '#9333EA'], textTone: 'light', rotation: -2.5, offsetY: -5, scale: 1, image: `${A}/magic-edit.jpg` },
+  { id: 'magic-switch', title: 'Magic\nSwitch', icon: Shuffle, gradient: ['#4C1D95', '#5B21B6'], textTone: 'light', rotation: 2.5, offsetY: -6, scale: 0.98, image: `${A}/magic-switch.jpg` },
+  { id: 'text-to-image', title: 'Text to\nimage', icon: ImagePlus, gradient: ['#7C3AED', '#4C1D95'], textTone: 'light', rotation: 1, offsetY: 6, scale: 1.02, image: `${A}/text-to-image.jpg` },
+  // ── Cards adicionales en diseño CSS (sin recorte real todavía). Añade su
+  //    `image` si algún día tienes el asset; si no, se ven perfectas así. ──
   { id: 'brand-voice', title: 'Brand\nvoice', icon: AudioLines, gradient: ['#EDE9FE', '#F5F3FF'], textTone: 'dark', rotation: 2, offsetY: 8, scale: 0.96 },
-  { id: 'magic-edit', title: 'Magic\nEdit', icon: Brush, gradient: ['#DB2777', '#9333EA'], textTone: 'light', rotation: -2.5, offsetY: -5, scale: 1 },
-  { id: 'text-to-image', title: 'Text to\nimage', icon: ImagePlus, gradient: ['#7C3AED', '#4C1D95'], textTone: 'light', rotation: 1, offsetY: 6, scale: 1.02 },
-  { id: 'magic-switch', title: 'Magic\nSwitch', icon: Shuffle, gradient: ['#4C1D95', '#5B21B6'], textTone: 'light', rotation: 2.5, offsetY: -6, scale: 0.98 },
+  { id: 'magic-design', title: 'Magic\nDesign', icon: Sparkles, gradient: ['#EF4444', '#F97316'], textTone: 'light', rotation: -2, offsetY: 7, scale: 0.97 },
   { id: 'upload-media', title: 'Upload your\nown media', icon: Upload, gradient: ['#FDA4AF', '#FDBA74'], textTone: 'dark', rotation: -1, offsetY: 4, scale: 1.01 },
   { id: 'image-to-video', title: 'Image\nto video', icon: Film, gradient: ['#8B1F9E', '#A21CAF'], textTone: 'light', rotation: -1.5, offsetY: 5, scale: 1 },
   { id: 'flourish-charts', title: 'Flourish\ncharts', icon: BarChart3, gradient: ['#FB7185', '#F87171'], textTone: 'dark', rotation: 2, offsetY: -4, scale: 1.02 },
-  { id: 'magic-design', title: 'Magic\nDesign', icon: Sparkles, gradient: ['#EF4444', '#F97316'], textTone: 'light', rotation: -2, offsetY: 7, scale: 0.97 },
   { id: 'swap-languages', title: 'Swap\nlanguages', icon: Languages, gradient: ['#A5B4FC', '#C7D2FE'], textTone: 'dark', rotation: 1.5, offsetY: -5, scale: 1 },
 ]

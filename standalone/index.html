@@ -577,19 +577,22 @@ window.WORKSHOP = {
   testimonials: []             // 👉 añade testimonios REALES: {name, role, quote}
 };
 
-/* ── Datos de contenido ── */
+/* ── Datos de contenido ──
+   `img`: recorte real opcional en  assets/canva-magic/<archivo>.jpg
+   (junto a este index.html). Si el archivo no existe, la card usa el
+   diseño CSS automáticamente (onerror). */
 const MAGIC = [
-  {t:"Magic\nAnimate",g:["#9333EA","#C026D3"],tone:"light"},
-  {t:"Grab Text",g:["#F97316","#FBBF24"],tone:"dark"},
-  {t:"Background\nRemover",g:["#7DD3FC","#BAE6FD"],tone:"dark"},
+  {t:"Magic\nAnimate",g:["#9333EA","#C026D3"],tone:"light",img:"assets/canva-magic/magic-animate.jpg"},
+  {t:"Grab Text",g:["#F97316","#FBBF24"],tone:"dark",img:"assets/canva-magic/grab-text.jpg"},
+  {t:"Background\nRemover",g:["#7DD3FC","#BAE6FD"],tone:"dark",img:"assets/canva-magic/background-remover.jpg"},
+  {t:"Magic\nEdit",g:["#DB2777","#9333EA"],tone:"light",img:"assets/canva-magic/magic-edit.jpg"},
+  {t:"Magic\nSwitch",g:["#4C1D95","#5B21B6"],tone:"light",img:"assets/canva-magic/magic-switch.jpg"},
+  {t:"Text to\nimage",g:["#7C3AED","#4C1D95"],tone:"light",img:"assets/canva-magic/text-to-image.jpg"},
   {t:"Brand\nvoice",g:["#EDE9FE","#F5F3FF"],tone:"dark"},
-  {t:"Magic\nEdit",g:["#DB2777","#9333EA"],tone:"light"},
-  {t:"Text to\nimage",g:["#7C3AED","#4C1D95"],tone:"light"},
-  {t:"Magic\nSwitch",g:["#4C1D95","#5B21B6"],tone:"light"},
+  {t:"Magic\nDesign",g:["#EF4444","#F97316"],tone:"light"},
   {t:"Upload your\nown media",g:["#FDA4AF","#FDBA74"],tone:"dark"},
   {t:"Image\nto video",g:["#8B1F9E","#A21CAF"],tone:"light"},
   {t:"Flourish\ncharts",g:["#FB7185","#F87171"],tone:"dark"},
-  {t:"Magic\nDesign",g:["#EF4444","#F97316"],tone:"light"},
   {t:"Swap\nlanguages",g:["#A5B4FC","#C7D2FE"],tone:"dark"}
 ];
 
@@ -698,11 +701,13 @@ function sparkRays(){
     const tc=light?"#fff":"#17141D";
     const soft=light?"rgba(255,255,255,.3)":"rgba(255,255,255,.5)";
     const blob=light?"rgba(255,255,255,.1)":"rgba(255,255,255,.4)";
+    const realImg=m.img?`<img src="${m.img}" alt="${m.t.replace('\n',' ')} — función de Canva" loading="lazy" decoding="async" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3">`:"";
     return `<div class="mcard" ${hidden?'aria-hidden="true"':''}><div class="inner" style="background:linear-gradient(140deg,${m.g[0]},${m.g[1]})">
       <h4 style="color:${tc}">${esc(m.t)}</h4>
       <span class="blob" style="background:${blob}"></span>
       <span class="bar" style="background:${soft}"></span>
       <span class="motif" style="color:${light?'rgba(255,255,255,.9)':'rgba(23,20,29,.8)'}">${ICONS.spark}</span>
+      ${realImg}
     </div></div>`;}).join("");
   track.innerHTML=build(false)+build(true);
 })();
