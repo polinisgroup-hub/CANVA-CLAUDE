@@ -20,6 +20,14 @@ export default {
         // Claude accent
         claude: '#D97757',
         'claude-hover': '#C9684B',
+        // Tokens compatibles con shadcn/ui (para componentes de 21st.dev)
+        border: 'hsl(var(--border))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: 'hsl(var(--card))',
+        'card-foreground': 'hsl(var(--card-foreground))',
+        'muted-foreground': 'hsl(var(--muted-foreground))',
+        ring: 'hsl(var(--ring))',
       },
       fontFamily: {
         display: ['"Playfair Display"', 'Georgia', 'serif'],

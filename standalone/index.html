@@ -334,6 +334,37 @@
   .bigprice .cur{font-size:1.25rem;font-weight:500;color:rgba(255,255,255,.6)}
   .payonce{margin-top:8px;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
+  /* ── Oferta estilo componente (tarjeta única, count-up, cut-reveal) ── */
+  .offer-head{max-width:640px;margin:0 auto 40px;text-align:center}
+  .offer-sub{color:var(--muted);margin-top:16px;font-size:1.02rem}
+  .cut{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:0 .28em}
+  .cut .w{display:inline-flex;overflow:hidden;line-height:1.05}
+  .cut .w i{display:inline-block;transform:translateY(110%);font-style:normal;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+  .cut.in .w i{transform:translateY(0)}
+  .plan-wrap{max-width:470px;margin:0 auto}
+  .plan-card{position:relative;background:#fff;border:2px solid rgba(217,119,87,.55);border-radius:24px;
+    box-shadow:0 26px 60px -30px rgba(23,20,29,.35),0 0 0 4px rgba(217,119,87,.12);padding:clamp(24px,4vw,34px);text-align:left}
+  .plan-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .plan-title{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:700;color:var(--ink)}
+  .plan-badge{background:var(--claude);color:#fff;border-radius:999px;padding:5px 13px;font-size:.72rem;font-weight:700;white-space:nowrap}
+  .plan-desc{color:var(--muted);font-size:.92rem;margin-top:10px}
+  .plan-promo{margin-top:14px;font-size:.85rem;color:var(--muted)}
+  .plan-promo .tag{background:rgba(217,119,87,.12);color:var(--claude);border-radius:999px;padding:3px 10px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+  .plan-price{display:flex;align-items:baseline;gap:8px;margin-top:12px}
+  .plan-price .num{font-family:"Playfair Display",serif;font-size:3.3rem;font-weight:800;color:var(--ink);line-height:1}
+  .plan-price .cur{color:var(--muted);font-size:.95rem}
+  .plan-cta{display:block;width:100%;margin-top:22px;text-align:center;border-radius:14px;padding:16px;box-sizing:border-box;
+    font-size:1.05rem;font-weight:700;color:#fff;text-decoration:none;background:linear-gradient(to top,var(--claude-hover),var(--claude));
+    border:1px solid rgba(217,119,87,.5);box-shadow:0 12px 30px -8px rgba(217,119,87,.5);transition:transform .3s var(--ease)}
+  .plan-cta:hover{transform:scale(1.02)}
+  .plan-incl{margin-top:24px;padding-top:20px;border-top:1px solid rgba(23,20,29,.08)}
+  .plan-incl h4{font-size:1rem;font-weight:700;color:var(--ink);margin:0 0 14px}
+  .plan-incl ul{list-style:none;margin:0;padding:0}
+  .plan-incl li{display:flex;align-items:center;gap:12px;margin-top:11px;color:var(--ink)}
+  .plan-incl .ck{flex:0 0 auto;width:24px;height:24px;border-radius:999px;border:1px solid var(--claude);display:grid;place-items:center;color:var(--claude)}
+  .plan-incl li span{font-size:.9rem;color:rgba(23,20,29,.8)}
+  .plan-note{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:.78rem;color:var(--muted)}
+
   /* accordion */
   .acc{border-top:1px solid rgba(23,20,29,.08);border-bottom:1px solid rgba(23,20,29,.08);margin-top:40px}
   .acc .item{border-bottom:1px solid rgba(23,20,29,.08)}
@@ -579,17 +610,36 @@
 
 <!-- ══ OFERTA / PRICING ══ -->
 <section class="sec bg-lav" id="oferta">
-  <div class="wrap maxw-3">
-    <div class="pricecard reveal">
-      <div class="g1" aria-hidden="true"></div><div class="g2" aria-hidden="true"></div>
-      <div class="in">
-        <span class="live-badge"><svg class="spark" style="width:14px;height:14px" viewBox="0 0 100 100"><g fill="#D97757" class="spark-rays-c"></g></svg> La oferta</span>
-        <h2 class="sec-title" style="color:#fff;margin-top:22px">Todo lo que necesitas para empezar.</h2>
-        <div class="incl" id="included"></div>
-        <p class="promo"><span class="tag">Precio promocional</span> &nbsp;Normalmente $<span class="js-compare">97</span> USD</p>
-        <div class="bigprice"><span class="num">$<span class="js-price">47</span></span><span class="cur">USD</span></div>
-        <p class="payonce">Pago único · Acceso de por vida</p>
-        <div style="margin-top:32px"><a class="btn block cta" href="#" style="max-width:420px;margin:0 auto"><span>QUIERO ENTRAR AL TALLER POR $<span class="js-price">47</span></span> <span class="arw">→</span></a></div>
+  <div class="wrap">
+    <div class="offer-head">
+      <h2 class="sec-title cut" id="offer-title" data-cut="Todo lo que necesitas para empezar"></h2>
+      <p class="offer-sub reveal">Un solo taller, un solo pago. Sin suscripciones ni cobros recurrentes.</p>
+    </div>
+
+    <div class="plan-wrap reveal">
+      <div class="plan-card">
+        <div class="plan-top">
+          <span class="plan-title">Taller Canva + Claude</span>
+          <span class="plan-badge">Promo</span>
+        </div>
+        <p class="plan-desc">Aprende a diseñar con Canva y a potenciar tus ideas con Claude. 4 clases pregrabadas + 1 clase especial EN VIVO.</p>
+        <p class="plan-promo"><span class="tag">Precio promocional</span> &nbsp;Normalmente $<span class="js-compare">97</span> USD</p>
+        <div class="plan-price">
+          <span class="num">$<span id="countup" data-to="47">47</span></span>
+          <span class="cur">USD · pago único</span>
+        </div>
+
+        <a class="plan-cta cta" href="#">QUIERO ENTRAR AL TALLER POR $<span class="js-price">47</span></a>
+
+        <div class="plan-incl">
+          <h4>Esto incluye:</h4>
+          <ul id="plan-includes"></ul>
+        </div>
+
+        <p class="plan-note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Pago único · Acceso a todo el contenido del taller
+        </p>
       </div>
     </div>
   </div>
@@ -1032,10 +1082,52 @@ document.getElementById("liveblocks").innerHTML=LIVE.map(b=>`
   }).join("");
 })();
 
-// included (oferta)
-document.getElementById("included").innerHTML=`
-  <div class="row"><span class="ic">${ICONS.play}</span><span style="font-weight:500">${window.WORKSHOP.price?4:4} clases pregrabadas</span></div>
-  <div class="row"><span class="ic">${ICONS.radio}</span><span style="font-weight:500">1 clase especial EN VIVO · Canva + Claude</span></div>`;
+// oferta: lista "Esto incluye"
+(function(){
+  const W=window.WORKSHOP;
+  const items=[
+    `${W.recordedClasses||4} clases pregrabadas`,
+    `${W.liveClasses||1} clase especial EN VIVO · Canva + Claude`,
+    "Aprende a tu propio ritmo",
+    "Acceso de por vida",
+    "Sin experiencia previa"
+  ];
+  const ck=`<span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 7 17l-4-4"/><path d="m22 10-7.5 7.5L13 16"/></svg></span>`;
+  const ul=document.getElementById("plan-includes");
+  if(ul) ul.innerHTML=items.map(t=>`<li>${ck}<span>${t}</span></li>`).join("");
+})();
+
+// oferta: título con "cut reveal" por palabras
+(function(){
+  const h=document.getElementById("offer-title");
+  if(!h) return;
+  const words=(h.dataset.cut||"").split(" ");
+  h.innerHTML=words.map((w,i)=>`<span class="w"><i style="transition-delay:${i*0.09}s">${w}</i></span>`).join(" ");
+  const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){h.classList.add("in");io.disconnect();}});},{threshold:.3});
+  io.observe(h);
+})();
+
+// oferta: count-up del precio ($0 → $47) al entrar en viewport
+(function(){
+  const el=document.getElementById("countup");
+  if(!el) return;
+  const to=parseInt(el.dataset.to||"47",10);
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){el.textContent=to;return;}
+  let done=false;
+  const run=()=>{
+    const start=performance.now(),dur=1100;
+    const tick=(now)=>{
+      const p=Math.min((now-start)/dur,1);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(eased*to);
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting&&!done){done=true;run();io.disconnect();}});},{threshold:.4});
+  el.textContent="0"; io.observe(el);
+})();
 
 // accordions
 function renderAcc(id,data){

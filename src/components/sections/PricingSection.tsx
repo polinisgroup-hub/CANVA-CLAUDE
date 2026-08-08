@@ -1,113 +1,170 @@
-import { PlayCircle, Radio, Check, ShieldCheck } from 'lucide-react'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import NumberFlow from '@number-flow/react'
+import { CheckCheck, PlayCircle, Radio, ShieldCheck } from 'lucide-react'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { TimelineContent } from '@/components/ui/timeline-animation'
+import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { Section } from '../ui/Section'
-import { Reveal } from '../ui/RevealText'
-import { PrimaryCTA } from '../ui/PrimaryCTA'
-import { ClaudeSpark } from '../ui/ClaudeSpark'
-import { workshopConfig } from '../../config/workshop'
+import { getCheckoutUrl, workshopConfig } from '../../config/workshop'
 
 /**
- * Bloque de oferta premium.
- * El precio actual es $47 (precio promocional autorizado). Se muestra el
- * precio normal ($97) sin recurrir a un tachado agresivo ni a descuentos
- * inventados: solo el dato promocional que indicó el cliente.
+ * Bloque de oferta — basado en el componente de pricing de 21st.dev
+ * (VerticalCutReveal + TimelineContent + NumberFlow + tarjeta con CTA
+ * degradado), adaptado a la oferta ÚNICA del taller: $47, pago único.
+ * Sin planes ni facturación mensual/anual (no aplican).
  */
 export function PricingSection() {
+  const pricingRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(pricingRef, { once: true, margin: '-120px' })
   const { price, compareAtPrice, currency, recordedClasses, liveClasses } =
     workshopConfig
+  const href = getCheckoutUrl()
+  const isExternal = /^https?:\/\//.test(href)
 
-  const included = [
-    { icon: PlayCircle, text: `${recordedClasses} clases pregrabadas` },
-    { icon: Radio, text: `${liveClasses} clase especial EN VIVO · Canva + Claude` },
+  const revealVariants = {
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+      transition: { delay: i * 0.3, duration: 0.5 },
+    }),
+    hidden: { filter: 'blur(10px)', y: -20, opacity: 0 },
+  }
+
+  const includes = [
+    `${recordedClasses} clases pregrabadas`,
+    `${liveClasses} clase especial EN VIVO · Canva + Claude`,
+    'Aprende a tu propio ritmo',
+    'Acceso de por vida',
+    'Sin experiencia previa',
   ]
 
   return (
     <Section id="oferta" tone="lavender" spacing="xl">
-      <div className="container-editorial">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-[2rem] bg-ink p-8 text-white shadow-glow sm:p-12">
-              {/* Glows internos */}
-              <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-purple/40 blur-[100px]" aria-hidden="true" />
-              <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-claude/20 blur-[100px]" aria-hidden="true" />
+      <div ref={pricingRef} className="container-editorial relative">
+        {/* Encabezado */}
+        <article className="mx-auto mb-10 max-w-2xl space-y-4 text-center">
+          <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-semibold tracking-tightest text-ink">
+            <VerticalCutReveal
+              splitBy="words"
+              staggerDuration={0.12}
+              staggerFrom="first"
+              reverse
+              containerClassName="justify-center"
+              transition={{ type: 'spring', stiffness: 250, damping: 40 }}
+            >
+              Todo lo que necesitas para empezar
+            </VerticalCutReveal>
+          </h2>
 
-              <div className="relative text-center">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-                  <ClaudeSpark className="h-3.5 w-3.5" />
-                  La oferta
+          <TimelineContent
+            as="p"
+            animationNum={0}
+            timelineRef={pricingRef}
+            customVariants={revealVariants}
+            className="mx-auto max-w-xl text-base text-muted"
+          >
+            Un solo taller, un solo pago. Sin suscripciones ni cobros
+            recurrentes.
+          </TimelineContent>
+        </article>
+
+        {/* Tarjeta única de la oferta */}
+        <TimelineContent
+          as="div"
+          animationNum={2}
+          timelineRef={pricingRef}
+          customVariants={revealVariants}
+          className="mx-auto max-w-md"
+        >
+          <Card className="relative border-2 border-claude/60 bg-white shadow-card ring-2 ring-claude/20">
+            <CardHeader className="text-left">
+              <div className="flex items-center justify-between">
+                <h3 className="font-display text-2xl font-semibold text-ink md:text-3xl">
+                  Taller Canva + Claude
+                </h3>
+                <span className="rounded-full bg-claude px-3 py-1 text-xs font-semibold text-white">
+                  Promo
                 </span>
+              </div>
+              <p className="mb-2 text-sm text-muted">
+                Aprende a diseñar con Canva y a potenciar tus ideas con Claude.
+                4 clases pregrabadas + 1 clase especial EN VIVO.
+              </p>
 
-                <h2 className="mt-6 font-display text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-tight tracking-tight">
-                  Todo lo que necesitas para empezar.
-                </h2>
+              {compareAtPrice && (
+                <p className="text-sm text-muted">
+                  <span className="rounded-full bg-claude/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-claude">
+                    Precio promocional
+                  </span>
+                  <span className="ml-2 align-middle">
+                    Normalmente ${compareAtPrice} {currency}
+                  </span>
+                </p>
+              )}
 
-                {/* Incluye */}
-                <ul className="mx-auto mt-8 flex max-w-md flex-col gap-3 text-left">
-                  {included.map((item) => (
-                    <li
-                      key={item.text}
-                      className="flex items-center gap-3 rounded-2xl bg-white/5 px-5 py-4 ring-1 ring-white/10"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-claude">
-                        <item.icon className="h-4.5 w-4.5" aria-hidden="true" />
+              <div className="flex items-baseline">
+                <span className="font-display text-5xl font-bold text-ink">
+                  $
+                  <NumberFlow
+                    value={inView ? price : 0}
+                    className="font-display text-5xl font-bold"
+                  />
+                </span>
+                <span className="ml-2 text-muted">{currency} · pago único</span>
+              </div>
+            </CardHeader>
+
+            <CardContent className="pt-0">
+              <a
+                href={href}
+                {...(isExternal
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+                className="mb-6 block w-full rounded-xl border border-claude/40 bg-gradient-to-t from-claude-hover to-claude p-4 text-center text-lg font-semibold text-white shadow-lg shadow-claude/40 transition-transform duration-300 ease-expo hover:scale-[1.02]"
+              >
+                QUIERO ENTRAR AL TALLER POR ${price}
+              </a>
+
+              <div className="space-y-3 border-t border-neutral-200 pt-4">
+                <h4 className="mb-1 text-base font-semibold text-ink">
+                  Esto incluye:
+                </h4>
+                <ul className="space-y-2.5">
+                  {includes.map((feature, i) => (
+                    <li key={i} className="flex items-center">
+                      <span className="mr-3 grid h-6 w-6 place-content-center rounded-full border border-claude bg-white">
+                        <CheckCheck className="h-4 w-4 text-claude" />
                       </span>
-                      <span className="text-sm font-medium sm:text-base">
-                        {item.text}
-                      </span>
+                      <span className="text-sm text-ink/80">{feature}</span>
                     </li>
                   ))}
                 </ul>
-
-                {/* Precio */}
-                <div className="mt-10">
-                  {compareAtPrice && (
-                    <p className="text-sm font-medium text-white/50">
-                      <span className="rounded-full bg-claude/15 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-claude">
-                        Precio promocional
-                      </span>
-                      <span className="ml-3 align-middle">
-                        Normalmente ${compareAtPrice} {currency}
-                      </span>
-                    </p>
-                  )}
-                  <div className="mt-3 flex items-baseline justify-center gap-2">
-                    <span className="font-display text-7xl font-bold leading-none sm:text-8xl">
-                      ${price}
-                    </span>
-                    <span className="text-xl font-medium text-white/60">
-                      {currency}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-white/60">
-                    {workshopConfig.paymentType}
-                  </p>
-                </div>
-
-                <PrimaryCTA className="mt-8 w-full sm:w-auto" size="lg">
-                  QUIERO ENTRAR AL TALLER POR ${price}
-                </PrimaryCTA>
-
-                <p className="mt-5 flex items-center justify-center gap-2 text-xs text-white/50">
-                  <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-                  Pago único · Acceso a todo el contenido del taller
-                </p>
               </div>
-            </div>
-          </Reveal>
 
-          {/* Micro-lista de refuerzo */}
-          <Reveal delay={0.1}>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
-              {['Sin experiencia previa', 'Aprende a tu ritmo', 'Diseño + IA'].map(
-                (item) => (
-                  <span key={item} className="inline-flex items-center gap-1.5">
-                    <Check className="h-4 w-4 text-purple" strokeWidth={2.5} aria-hidden="true" />
-                    {item}
-                  </span>
-                ),
-              )}
-            </div>
-          </Reveal>
-        </div>
+              <p className="mt-6 flex items-center justify-center gap-2 text-xs text-muted">
+                <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+                Pago único · Acceso a todo el contenido del taller
+              </p>
+            </CardContent>
+          </Card>
+        </TimelineContent>
+
+        {/* Refuerzo visual (iconos de lo que incluye) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="mx-auto mt-8 flex max-w-md items-center justify-center gap-6 text-sm text-muted"
+        >
+          <span className="inline-flex items-center gap-2">
+            <PlayCircle className="h-4 w-4 text-purple" /> {recordedClasses} pregrabadas
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Radio className="h-4 w-4 text-claude" /> {liveClasses} EN VIVO
+          </span>
+        </motion.div>
       </div>
     </Section>
   )
