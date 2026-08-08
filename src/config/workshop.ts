@@ -15,6 +15,14 @@
 export interface Instructor {
   name: string
   role: string
+  /** Ruta opcional a la foto (p. ej. /brand/natasha.jpg). Si falta, se usa monograma. */
+  photo?: string
+}
+
+export interface WhatsAppConfig {
+  /** Número con código de país, solo dígitos. Vacío = sin número aún. */
+  number: string
+  message: string
 }
 
 export interface WorkshopConfig {
@@ -36,6 +44,7 @@ export interface WorkshopConfig {
   recordedClasses: number
   liveClasses: number
   instructors: Instructor[]
+  whatsapp: WhatsAppConfig
 }
 
 export const workshopConfig: WorkshopConfig = {
@@ -58,8 +67,23 @@ export const workshopConfig: WorkshopConfig = {
   recordedClasses: 4,
   liveClasses: 1,
 
-  // ⚠️ EDITAR: instructoras reales del taller.
-  instructors: [{ name: 'Por confirmar', role: 'Instructora' }],
+  instructors: [
+    { name: 'Natasha Polini', role: 'Instructora' },
+    { name: 'Lindamar Mercado', role: 'Instructora' },
+  ],
+
+  // ⚠️ EDITAR: pon tu número de WhatsApp con código de país (solo dígitos).
+  whatsapp: {
+    number: '',
+    message: 'Hola 👋, tengo dudas sobre el Taller Canva + Claude.',
+  },
+}
+
+/** Enlace de WhatsApp (wa.me) con mensaje prellenado. */
+export function getWhatsAppUrl(): string {
+  const num = (workshopConfig.whatsapp.number || '').replace(/\D/g, '')
+  const msg = encodeURIComponent(workshopConfig.whatsapp.message || '')
+  return num ? `https://wa.me/${num}?text=${msg}` : `https://wa.me/?text=${msg}`
 }
 
 /** Devuelve el destino real de los CTA. */

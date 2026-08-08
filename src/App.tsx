@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import { StickyMobileCTA } from './components/layout/StickyMobileCTA'
+import { WhatsAppButton } from './components/layout/WhatsAppButton'
 import { WorkshopHero } from './components/hero/WorkshopHero'
 import { ProblemSection } from './components/sections/ProblemSection'
 import { TransformationSection } from './components/sections/TransformationSection'
@@ -9,6 +10,7 @@ import { AudienceSection } from './components/sections/AudienceSection'
 import { EditorialTransition } from './components/sections/EditorialTransition'
 import { ModulesSection } from './components/sections/ModulesSection'
 import { LiveClassSection } from './components/sections/LiveClassSection'
+import { InstructorsSection } from './components/sections/InstructorsSection'
 import { WorkflowSection } from './components/sections/WorkflowSection'
 import { PossibilitiesSection } from './components/sections/PossibilitiesSection'
 import { BenefitsSection } from './components/sections/BenefitsSection'
@@ -50,6 +52,7 @@ export default function App() {
         <EditorialTransition />
         <ModulesSection />
         <LiveClassSection />
+        <InstructorsSection />
         <WorkflowSection />
         <PossibilitiesSection />
         <BenefitsSection />
@@ -67,6 +70,7 @@ export default function App() {
       <Footer ref={footerRef} />
 
       <StickyMobileCTA visible={stickyVisible} />
+      <WhatsAppButton />
     </>
   )
 }
