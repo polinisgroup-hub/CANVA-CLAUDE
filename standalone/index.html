@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#17141D" />
+<title>Aprende y monetiza con Canva + Claude — Taller online</title>
+<meta name="description" content="Taller online: Aprende y monetiza con Canva + Claude. 4 clases pregrabadas + 1 clase especial EN VIVO. Diseña contenido profesional y crea tu marca personal, carruseles y productos digitales desde cero. $47 USD, pago único." />
+
+<!--
+  ────────────────────────────────────────────────────────────────
+  TALLER ONLINE · APRENDE Y MONETIZA CON CANVA + CLAUDE
+  Landing autónoma en un solo archivo HTML (sin build, sin React).
+  Diseño premium editorial · contenido honesto (sin escasez falsa,
+  sin testimonios inventados, sin "valor total" inventado).
+
+  ⚙️ EDITAR EN UN SOLO LUGAR: busca el bloque  window.WORKSHOP  al
+     final del archivo (checkout, precio, fecha, hora, instructoras).
+  ────────────────────────────────────────────────────────────────
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#17141D; --muted:#6F6A76; --white:#fff;
+    --lavender:#F4F0FF; --purple:#5B21B6; --purple-deep:#312E81;
+    --claude:#D97757; --claude-hover:#C9684B;
+    --maxw:1120px;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--white);color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,sans-serif;
+    line-height:1.6;overflow-x:hidden;text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Playfair Display",Georgia,serif;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance;font-weight:700}
+  p{margin:0;text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--claude);color:#fff}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:4px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .script{font-family:"Dancing Script",cursive}
+  .grad{background:linear-gradient(120deg,#5b21b6,#7c3aed 45%,#4f46e5);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tabular{font-variant-numeric:tabular-nums}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .eyebrow .n{color:var(--claude)}
+  .lead{color:var(--muted);font-size:clamp(1rem,1.6vw,1.18rem)}
+
+  section{position:relative;overflow:hidden}
+  .sec{padding:clamp(64px,9vw,128px) 0}
+  .bg-lav{background:var(--lavender)}
+  .bg-ink{background:var(--ink);color:#fff}
+  .bg-grad{background:linear-gradient(140deg,#312E81,#4C1D95 40%,#5B21B6 70%,#4338CA)}
+
+  /* ── Header ── */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:all .3s var(--ease);border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom-color:rgba(23,20,29,.06)}
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .navlinks{display:none;gap:30px}
+  .navlinks a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .2s}
+  .navlinks a:hover{color:var(--ink)}
+  @media(min-width:1000px){.navlinks{display:flex}}
+
+  /* ── Brand lockup ── */
+  .lockup{display:inline-flex;align-items:center;gap:10px}
+  .lockup .c{font-family:"Dancing Script",cursive;font-size:1.7rem;font-weight:700;line-height:1}
+  .lockup .cl{font-weight:600;font-family:Inter,sans-serif;font-size:1.35rem;line-height:1}
+  .spark{width:24px;height:24px;flex:0 0 auto}
+  .lockup.light .c,.lockup.light .cl{color:#fff}
+  .lockup.dark .c,.lockup.dark .cl{color:var(--ink)}
+
+  /* ── Buttons ── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;
+    background:var(--claude);color:#fff;font-weight:600;font-size:1rem;padding:15px 30px;
+    box-shadow:0 14px 40px -10px rgba(217,119,87,.5);transition:all .3s var(--ease);cursor:pointer;border:0}
+  .btn:hover{background:var(--claude-hover);transform:scale(1.02);box-shadow:0 20px 55px -10px rgba(217,119,87,.6)}
+  .btn .arw{transition:transform .3s var(--ease)}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.sm{padding:11px 22px;font-size:.9rem}
+  .btn.block{width:100%}
+  .btn.ghost-head{display:none}
+  @media(min-width:640px){.btn.ghost-head{display:inline-flex}}
+
+  /* ── Hero ── */
+  .hero{padding-top:130px;text-align:center}
+  .hero .halo{position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(760px,90%);height:480px;
+    background:rgba(244,240,255,.7);filter:blur(90px);z-index:-1;border-radius:999px}
+  .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(23,20,29,.1);background:rgba(255,255,255,.8);
+    backdrop-filter:blur(6px);border-radius:999px;padding:7px 16px;font-size:.85rem;color:var(--muted);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .badge b{color:var(--ink);font-weight:600}
+  h1.hero-title{font-size:clamp(2.4rem,7vw,5rem);font-weight:800;margin-top:26px}
+  h1.hero-title .row2{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px;margin-top:6px}
+  h1.hero-title .con{color:rgba(23,20,29,.8)}
+  h1.hero-title .c{font-family:"Dancing Script",cursive;font-size:1.12em}
+  h1.hero-title .spark{width:.7em;height:.7em}
+  .hero .sub{max-width:720px;margin:22px auto 0;font-size:clamp(1rem,1.7vw,1.2rem);color:var(--muted)}
+  .hero .noexp{margin-top:12px;font-weight:500;color:rgba(23,20,29,.7);font-size:.95rem}
+  .microinfo{margin-top:24px;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;
+    font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .microinfo .dot{color:var(--claude)}
+  .microinfo .price{color:var(--ink)}
+
+  /* ── Marquee ── */
+  .marquee{position:relative;margin-top:52px;
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);
+    mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);overflow:hidden}
+  @media(max-width:640px){.marquee{-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);
+    mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}}
+  .track{display:flex;width:max-content;align-items:center;animation:scroll 42s linear infinite;will-change:transform}
+  @media(max-width:640px){.track{animation-duration:30s}}
+  @keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+  .mcard{flex:0 0 auto;padding:0 14px}
+  .mcard .inner{position:relative;width:250px;aspect-ratio:3/2;border-radius:22px;overflow:hidden;
+    box-shadow:0 18px 50px -20px rgba(23,20,29,.28);box-shadow:0 18px 50px -20px rgba(23,20,29,.28)}
+  .mcard h4{position:absolute;left:18px;top:15px;font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.08;white-space:pre-line;z-index:2}
+  .mcard .motif{position:absolute;right:14px;bottom:12px;width:46px;height:46px;opacity:.85}
+  .mcard .bar{position:absolute;left:18px;bottom:16px;height:8px;width:60px;border-radius:999px}
+  .mcard .blob{position:absolute;right:-10px;bottom:-12px;width:92px;height:92px;border-radius:22px;transform:rotate(12deg);filter:blur(2px)}
+  .cta-over{position:absolute;inset:0;z-index:20;display:grid;place-items:center;pointer-events:none}
+  .cta-over .glow{position:absolute;width:200px;height:200px;border-radius:999px;background:rgba(255,255,255,.7);filter:blur(36px)}
+  .cta-over .btn{pointer-events:auto;position:relative}
+
+  /* ── Generic blocks ── */
+  .center{text-align:center}
+  .mx-auto{margin-left:auto;margin-right:auto}
+  h2.sec-title{font-size:clamp(1.8rem,4.4vw,3.2rem);font-weight:700}
+  .maxw-3{max-width:820px}
+  .maxw-2{max-width:640px}
+  .stack>*+*{margin-top:18px}
+  blockquote{margin:0;border-left:2px solid var(--claude);padding-left:26px}
+  blockquote p{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.6rem);color:var(--ink)}
+
+  /* chips row (para quién) */
+  .chips{display:grid;gap:1px;background:rgba(23,20,29,.08);border-radius:24px;overflow:hidden;margin-top:56px}
+  @media(min-width:640px){.chips{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:960px){.chips{grid-template-columns:repeat(3,1fr)}}
+  .chip{background:#fff;padding:30px;transition:background .3s}
+  .chip:hover{background:var(--lavender)}
+  .chip .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--lavender);color:var(--purple);margin-bottom:16px}
+  .chip h3{font-family:Inter,sans-serif;font-size:1.02rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+  .chip p{margin-top:6px;font-size:.92rem;color:var(--muted)}
+
+  /* pain list */
+  .painlist{margin-top:44px;display:grid;gap:14px}
+  .pain{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(23,20,29,.06);border-radius:18px;padding:18px 22px}
+  .pain .x{flex:0 0 auto;width:26px;height:26px;border-radius:999px;background:rgba(23,20,29,.06);color:rgba(23,20,29,.4);display:grid;place-items:center;font-weight:700;margin-top:1px}
+  .pain span{color:var(--muted)}
+
+  /* possibilities bento */
+  .bento{margin-top:52px;display:grid;gap:18px}
+  @media(min-width:640px){.bento{grid-template-columns:repeat(2,1fr)}}
+  .pcard{position:relative;overflow:hidden;background:#fff;border:1px solid rgba(23,20,29,.06);border-radius:24px;padding:32px;transition:box-shadow .5s}
+  .pcard:hover{box-shadow:0 18px 50px -20px rgba(23,20,29,.22)}
+  .pcard .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff}
+  .pcard h3{font-family:Inter,sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
+  .pcard ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .pcard li{background:var(--lavender);color:rgba(23,20,29,.8);border-radius:999px;padding:6px 14px;font-size:.88rem;font-weight:500}
+
+  /* outcomes checklist (dark) */
+  .outcomes{margin-top:48px;display:grid;gap:14px;max-width:840px}
+  @media(min-width:760px){.outcomes{grid-template-columns:1fr 1fr}}
+  .oc{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px 20px}
+  .oc .ck{flex:0 0 auto;width:24px;height:24px;border-radius:999px;background:rgba(217,119,87,.2);color:var(--claude);display:grid;place-items:center;margin-top:1px}
+  .oc span{color:rgba(255,255,255,.85);font-weight:500;font-size:.98rem}
+
+  /* modules timeline */
+  .mod{display:grid;gap:22px;border:1px solid rgba(23,20,29,.06);border-radius:24px;padding:26px;background:#fff;transition:box-shadow .5s}
+  .mod+.mod{margin-top:20px}
+  .mod:hover{box-shadow:0 10px 40px -12px rgba(23,20,29,.12)}
+  @media(min-width:640px){.mod{grid-template-columns:auto 1fr;gap:38px;padding:34px}}
+  .mod .num{font-family:"Playfair Display",serif;font-size:3.4rem;font-weight:800;color:rgba(23,20,29,.1);line-height:1}
+  .mod .lab{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--claude)}
+  .mod .body{border-left:0}
+  @media(min-width:640px){.mod .body{border-left:1px solid rgba(23,20,29,.07);padding-left:38px}}
+  .mod h3{font-size:1.5rem}
+  .mod .tags{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;padding:0;list-style:none}
+  .mod .tags li{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted)}
+  .mod .tags li::before{content:"";width:6px;height:6px;border-radius:999px;background:rgba(91,33,182,.4)}
+  .mod .res{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:rgba(244,240,255,.7);border-radius:16px;padding:16px 18px}
+  .mod .res .ck{flex:0 0 auto;width:22px;height:22px;border-radius:999px;background:rgba(91,33,182,.15);color:var(--purple);display:grid;place-items:center;margin-top:1px}
+  .mod .res p{font-size:.94rem;font-weight:500;color:var(--ink)}
+
+  /* live section */
+  .live-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);
+    border-radius:999px;padding:8px 18px;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);backdrop-filter:blur(6px)}
+  .glow-a{position:absolute;left:-120px;top:40px;width:380px;height:380px;border-radius:999px;background:rgba(91,33,182,.4);filter:blur(120px);z-index:0}
+  .glow-b{position:absolute;right:-100px;top:33%;width:380px;height:380px;border-radius:999px;background:rgba(49,46,129,.6);filter:blur(120px);z-index:0}
+  .glow-c{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:560px;height:280px;border-radius:999px;background:rgba(217,119,87,.15);filter:blur(120px);z-index:0}
+  .live-grid{position:relative;z-index:1;margin-top:60px;display:grid;gap:18px}
+  @media(min-width:900px){.live-grid{grid-template-columns:1fr 1fr}}
+  .lblock{display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-radius:24px;padding:30px;transition:.3s;backdrop-filter:blur(4px)}
+  .lblock:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
+  .lblock .tg{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--claude)}
+  .lblock h3{margin-top:12px;font-size:1.35rem;color:#fff}
+  .lblock ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+  .lblock li{display:flex;gap:10px;align-items:center;font-size:.92rem;color:rgba(255,255,255,.7)}
+  .lblock li::before{content:"→";color:rgba(124,58,237,.9)}
+  .flow{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .flow .step{border-radius:999px;padding:5px 12px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1)}
+  .flow .step.claude{background:rgba(217,119,87,.15);color:var(--claude);border-color:rgba(217,119,87,.3)}
+  .flow .step.canva{background:rgba(91,33,182,.25);color:#fff;border-color:rgba(91,33,182,.4)}
+  .flow .arw2{color:rgba(255,255,255,.25)}
+
+  /* testimonials placeholder */
+  .tgrid{margin-top:52px;display:grid;gap:18px}
+  @media(min-width:760px){.tgrid{grid-template-columns:repeat(3,1fr)}}
+  .tph{border:1px dashed rgba(23,20,29,.15);background:rgba(244,240,255,.4);border-radius:24px;padding:28px}
+  .tph .q{width:28px;height:28px;color:rgba(23,20,29,.2)}
+  .tph .ln{height:12px;border-radius:999px;background:rgba(23,20,29,.1);margin-top:10px}
+  .tph .foot{display:flex;gap:12px;align-items:center;margin-top:24px}
+  .tph .av{width:40px;height:40px;border-radius:999px;background:rgba(23,20,29,.1)}
+  .note{margin-top:28px;text-align:center;font-size:.9rem;color:var(--muted)}
+  .note code{background:rgba(23,20,29,.06);border-radius:6px;padding:2px 7px;font-size:.8rem}
+
+  /* pricing */
+  .pricecard{position:relative;overflow:hidden;background:var(--ink);color:#fff;border-radius:32px;padding:clamp(30px,5vw,56px);
+    box-shadow:0 0 80px -10px rgba(91,33,182,.55);text-align:center}
+  .pricecard .g1{position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:999px;background:rgba(91,33,182,.4);filter:blur(100px)}
+  .pricecard .g2{position:absolute;left:-80px;bottom:-80px;width:260px;height:260px;border-radius:999px;background:rgba(217,119,87,.2);filter:blur(100px)}
+  .pricecard .in{position:relative}
+  .incl{max-width:440px;margin:32px auto 0;display:grid;gap:12px;text-align:left}
+  .incl .row{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 20px}
+  .incl .row .ic{flex:0 0 auto;width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.1);color:var(--claude);display:grid;place-items:center}
+  .promo{margin-top:40px;font-size:.9rem;color:rgba(255,255,255,.55)}
+  .promo .tag{background:rgba(217,119,87,.15);color:var(--claude);border-radius:999px;padding:3px 12px;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .bigprice{margin-top:12px;display:flex;align-items:baseline;justify-content:center;gap:8px}
+  .bigprice .num{font-family:"Playfair Display",serif;font-size:clamp(4rem,11vw,6.5rem);font-weight:800;line-height:1}
+  .bigprice .cur{font-size:1.25rem;font-weight:500;color:rgba(255,255,255,.6)}
+  .payonce{margin-top:8px;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+  /* accordion */
+  .acc{border-top:1px solid rgba(23,20,29,.08);border-bottom:1px solid rgba(23,20,29,.08);margin-top:40px}
+  .acc .item{border-bottom:1px solid rgba(23,20,29,.08)}
+  .acc .item:last-child{border-bottom:0}
+  .acc button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    background:none;border:0;padding:22px 0;text-align:left;cursor:pointer;font-family:inherit;color:var(--ink);transition:color .2s}
+  .acc button:hover{color:var(--purple)}
+  .acc .qh{font-size:1.05rem;font-weight:600}
+  .acc .pm{flex:0 0 auto;width:32px;height:32px;border-radius:999px;background:var(--lavender);color:var(--purple);
+    display:grid;place-items:center;transition:transform .3s var(--ease);font-size:1.2rem;line-height:1}
+  .acc .item.open .pm{transform:rotate(45deg)}
+  .acc .panel{overflow:hidden;max-height:0;transition:max-height .35s var(--ease)}
+  .acc .panel p{padding:0 48px 22px 0;color:var(--muted)}
+
+  /* final cta */
+  .final{min-height:86vh;display:flex;align-items:center;color:#fff;text-align:center;padding:96px 0}
+  .final .g1{position:absolute;left:-120px;top:0;width:380px;height:380px;border-radius:999px;background:rgba(91,33,182,.5);filter:blur(130px)}
+  .final .g2{position:absolute;right:-120px;bottom:0;width:380px;height:380px;border-radius:999px;background:rgba(67,56,202,.45);filter:blur(130px)}
+  .final .pre{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(1.4rem,3.4vw,2.2rem);color:rgba(255,255,255,.8)}
+  .final h2{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;margin-top:20px}
+  .final .txt{max-width:680px;margin:22px auto 0;color:rgba(255,255,255,.72);font-size:clamp(1rem,1.7vw,1.15rem)}
+
+  /* footer */
+  footer{background:var(--ink);color:#fff}
+  .fgrid{display:grid;gap:44px;padding:64px 0}
+  @media(min-width:760px){.fgrid{grid-template-columns:1.6fr 1fr 1fr}}
+  .fgrid h4{font-family:Inter,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+  .fgrid ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+  .fgrid a{color:rgba(255,255,255,.7);font-size:.92rem;transition:color .2s}
+  .fgrid a:hover{color:#fff}
+  .fbottom{border-top:1px solid rgba(255,255,255,.1);padding:28px 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,.4)}
+
+  /* sticky mobile cta */
+  .sticky{position:fixed;inset:auto 0 0 0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top,rgba(255,255,255,.97),rgba(255,255,255,.75),transparent);
+    transform:translateY(120%);transition:transform .35s var(--ease)}
+  .sticky.show{transform:translateY(0)}
+  .sticky a{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--claude);color:#fff;
+    border-radius:999px;padding:14px 24px;box-shadow:0 14px 40px -10px rgba(217,119,87,.5);font-weight:600}
+  .sticky .p{font-weight:800;display:inline-flex;gap:6px;align-items:center}
+  @media(min-width:640px){.sticky{display:none}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  .skip{position:absolute;left:-999px;top:0;z-index:60}
+  .skip:focus{left:16px;top:16px;background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    .track{animation:none;overflow-x:auto}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ══ HEADER ══ -->
+<header id="site-header">
+  <div class="wrap navbar">
+    <a href="#top" aria-label="Inicio — Taller Canva + Claude" class="lockup dark">
+      <span class="c">Canva</span>
+      <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#D97757" id="spark-rays"></g></svg>
+      <span class="cl">Claude</span>
+    </a>
+    <nav class="navlinks" aria-label="Principal">
+      <a href="#contenido">Contenido</a>
+      <a href="#clase-en-vivo">Clase en vivo</a>
+      <a href="#incluye">Incluye</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn sm ghost-head cta" href="#oferta"><span>Entrar por $<span class="js-price">47</span></span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ══ HERO ══ -->
+<section class="hero sec" id="hero" aria-labelledby="hero-title">
+  <div class="halo" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal" style="letter-spacing:.35em">Taller online</p>
+    <div class="badge reveal" style="margin-top:14px">
+      <span style="color:var(--claude)">✦</span> 4 clases pregrabadas + 1 clase EN VIVO
+      <span style="color:rgba(23,20,29,.2)">·</span> <b>Canva + Claude</b>
+    </div>
+    <h1 class="hero-title reveal" id="hero-title">
+      Aprende y monetiza
+      <span class="row2">
+        <span class="con">con</span>
+        <span class="c grad">Canva</span>
+        <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#D97757" class="spark-rays-c"></g></svg>
+        <span class="grad">Claude</span>
+      </span>
+    </h1>
+    <p class="sub reveal">Genera ingresos desde internet utilizando herramientas digitales, aunque no tengas experiencia previa. Aprende a diseñar contenido profesional con Canva y descubre cómo usar Claude para crear tu marca personal, carruseles para Instagram y productos digitales desde cero.</p>
+    <p class="noexp reveal">No necesitas experiencia previa.</p>
+    <p class="microinfo reveal">
+      <span>4 clases pregrabadas</span><span class="dot">•</span>
+      <span>1 clase EN VIVO</span><span class="dot">•</span>
+      <span class="price">$<span class="js-price">47</span> USD</span>
+    </p>
+  </div>
+
+  <!-- Marquee de features de Canva con CTA superpuesto -->
+  <div class="marquee reveal" role="group" aria-label="Funciones de Canva Magic Studio">
+    <div class="track" id="marquee-track"></div>
+    <div class="cta-over">
+      <span class="glow" aria-hidden="true"></span>
+      <a class="btn cta" href="#oferta"><span>QUIERO ENTRAR POR $<span class="js-price">47</span></span> <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div style="height:60px"></div>
+</section>
+
+<!-- ══ PROBLEMA ══ -->
+<section class="sec" id="problema">
+  <div class="wrap maxw-3">
+    <p class="eyebrow reveal"><span class="n">01</span> &nbsp;—&nbsp; El problema real</p>
+    <h2 class="sec-title reveal" style="margin-top:14px">Si crear contenido te toma horas, probablemente no te falta creatividad… <span class="grad">te falta un sistema.</span></h2>
+    <div class="stack lead reveal" style="margin-top:34px">
+      <p>Tienes una idea en la cabeza, abres Canva y después de 40 minutos sigues cambiando colores, tipografías y elementos sin conseguir que el diseño se vea como imaginabas.</p>
+      <p>O guardas publicaciones de otras cuentas pensando: <span style="color:var(--ink)">«quiero que mi contenido se vea así»</span>, pero cuando intentas hacerlo tú, algo no se siente igual.</p>
+      <p>Canva tiene muchísimas posibilidades. Y ahora también existe la inteligencia artificial. El problema no es tener más herramientas. Es saber cómo utilizarlas juntas.</p>
+    </div>
+    <blockquote class="reveal" style="margin-top:44px">
+      <p>Crear contenido profesional no empieza teniendo más herramientas. Empieza sabiendo cómo utilizarlas.</p>
+    </blockquote>
+    <div class="reveal" style="margin-top:36px"><a class="btn cta" href="#oferta">QUIERO APRENDER EL SISTEMA <span class="arw">→</span></a></div>
+  </div>
+</section>
+
+<!-- ══ PARA QUIÉN / CARACTERÍSTICAS ══ -->
+<section class="sec bg-lav" id="para-quien">
+  <div class="wrap">
+    <div class="center maxw-2 mx-auto">
+      <p class="eyebrow reveal"><span class="n">02</span> &nbsp;—&nbsp; Para quién es</p>
+      <h2 class="sec-title reveal" style="margin-top:14px">Este taller es para ti si…</h2>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</section>
+
+<!-- ══ DOLOR / ¿QUIERES CREAR CONTENIDO...? ══ -->
+<section class="sec" id="dolor">
+  <div class="wrap maxw-3">
+    <p class="eyebrow reveal"><span class="n">03</span> &nbsp;—&nbsp; Lo que hoy te frena</p>
+    <h2 class="sec-title reveal" style="margin-top:14px">¿Quieres crear contenido llamativo que te ayude a destacar, pero…?</h2>
+    <div class="painlist" id="painlist"></div>
+    <blockquote class="reveal" style="margin-top:44px">
+      <p>El secreto para atraer más seguidores no está en publicar más… está en causar una primera impresión imposible de ignorar.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ══ POSIBILIDADES ══ -->
+<section class="sec bg-lav" id="posibilidades">
+  <div class="wrap">
+    <div class="center maxw-2 mx-auto">
+      <p class="eyebrow reveal"><span class="n">04</span> &nbsp;—&nbsp; Imagina si pudieras crear</p>
+      <h2 class="sec-title reveal" style="margin-top:14px">Una herramienta. <span class="grad">Decenas de posibilidades.</span></h2>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<!-- ══ LO QUE VAS A LOGRAR (dark) ══ -->
+<section class="sec bg-ink" id="lograr">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="color:rgba(255,255,255,.55)"><span class="n">05</span> &nbsp;—&nbsp; El resultado</p>
+    <h2 class="sec-title reveal" style="margin-top:14px;color:#fff;max-width:820px">Lo que vas a lograr en el taller de Canva + Claude.</h2>
+    <div class="outcomes" id="outcomes"></div>
+  </div>
+</section>
+
+<!-- ══ CONTENIDO / MÓDULOS ══ -->
+<section class="sec" id="contenido">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">06</span> &nbsp;—&nbsp; Contenido del taller</p>
+    <h2 class="sec-title reveal" style="margin-top:14px">Tu ruta para pasar de principiante a creador.</h2>
+    <p class="lead reveal maxw-3" style="margin-top:18px">4 clases pregrabadas para aprender a tu ritmo + una experiencia especial EN VIVO donde llevaremos Canva al siguiente nivel utilizando Claude.</p>
+    <div style="margin-top:56px" id="modules"></div>
+  </div>
+</section>
+
+<!-- ══ CLASE EN VIVO (protagonista) ══ -->
+<section class="sec bg-ink" id="clase-en-vivo">
+  <div class="glow-a" aria-hidden="true"></div>
+  <div class="glow-b" aria-hidden="true"></div>
+  <div class="glow-c" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="center maxw-3 mx-auto">
+      <span class="live-badge reveal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49M7.76 16.24a6 6 0 010-8.49M19.07 4.93a10 10 0 010 14.14M4.93 19.07a10 10 0 010-14.14"/></svg> Clase especial EN VIVO</span>
+      <div class="reveal" style="margin-top:30px;display:flex;justify-content:center">
+        <span class="lockup light">
+          <span class="c">Canva</span>
+          <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#D97757" class="spark-rays-c"></g></svg>
+          <span class="cl">Claude</span>
+        </span>
+      </div>
+      <h2 class="sec-title reveal" style="margin-top:28px;color:#fff">Diseña con Canva. <span style="color:var(--claude)">Potencia tus ideas con Claude.</span></h2>
+      <p class="reveal" style="margin:22px auto 0;max-width:640px;color:rgba(255,255,255,.7);font-size:1.1rem">Aprende a combinar diseño + inteligencia artificial para construir tu marca, crear contenido profesional y transformar una idea en un producto digital.</p>
+      <p class="reveal" style="margin:24px auto 0;max-width:560px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.88);font-size:1.15rem">No será una clase para mirar. Verás cómo construimos cada pieza desde cero.</p>
+    </div>
+    <div class="live-grid" id="liveblocks"></div>
+    <p class="reveal center" style="margin:56px auto 0;max-width:640px;font-family:'Playfair Display',serif;font-size:1.5rem;color:rgba(255,255,255,.9)">«Claude te ayuda a desarrollar la idea. <span style="color:var(--claude)">Canva te ayuda a darle forma.»</span></p>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIOS (placeholder honesto) ══ -->
+<section class="sec" id="testimonios">
+  <div class="wrap">
+    <div class="center maxw-2 mx-auto">
+      <p class="eyebrow reveal"><span class="n">07</span> &nbsp;—&nbsp; Testimonios</p>
+      <h2 class="sec-title reveal" style="margin-top:14px">Ellos ya comenzaron a transformar su forma de crear.</h2>
+    </div>
+    <div class="tgrid" id="testimonials"></div>
+    <p class="note reveal"><strong style="color:var(--ink)">Sección pendiente:</strong> añade testimonios reales en el bloque <code>window.WORKSHOP.testimonials</code> (no se muestran testimonios inventados).</p>
+  </div>
+</section>
+
+<!-- ══ OFERTA / PRICING ══ -->
+<section class="sec bg-lav" id="oferta">
+  <div class="wrap maxw-3">
+    <div class="pricecard reveal">
+      <div class="g1" aria-hidden="true"></div><div class="g2" aria-hidden="true"></div>
+      <div class="in">
+        <span class="live-badge"><svg class="spark" style="width:14px;height:14px" viewBox="0 0 100 100"><g fill="#D97757" class="spark-rays-c"></g></svg> La oferta</span>
+        <h2 class="sec-title" style="color:#fff;margin-top:22px">Todo lo que necesitas para empezar.</h2>
+        <div class="incl" id="included"></div>
+        <p class="promo"><span class="tag">Precio promocional</span> &nbsp;Normalmente $<span class="js-compare">97</span> USD</p>
+        <div class="bigprice"><span class="num">$<span class="js-price">47</span></span><span class="cur">USD</span></div>
+        <p class="payonce">Pago único · Acceso de por vida</p>
+        <div style="margin-top:32px"><a class="btn block cta" href="#" style="max-width:420px;margin:0 auto"><span>QUIERO ENTRAR AL TALLER POR $<span class="js-price">47</span></span> <span class="arw">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OBJECIONES ══ -->
+<section class="sec" id="objeciones">
+  <div class="wrap maxw-3">
+    <p class="eyebrow reveal"><span class="n">08</span> &nbsp;—&nbsp; Todavía dudas</p>
+    <h2 class="sec-title reveal" style="margin-top:14px">Okay, llegaste hasta acá… esto es para ti si:</h2>
+    <div class="acc" id="objections"></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="sec bg-lav" id="faq">
+  <div class="wrap maxw-3">
+    <div class="center maxw-2 mx-auto">
+      <p class="eyebrow reveal"><span class="n">09</span> &nbsp;—&nbsp; Preguntas frecuentes</p>
+      <h2 class="sec-title reveal" style="margin-top:14px">Resolvemos tus dudas.</h2>
+    </div>
+    <div class="acc" id="faqs"></div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="final bg-grad" id="acceso" aria-labelledby="final-title">
+  <div class="g1" aria-hidden="true"></div><div class="g2" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <div class="maxw-3 mx-auto">
+      <p class="pre reveal">Tu próxima idea merece algo mejor que quedarse en tu cabeza.</p>
+      <h2 class="reveal" id="final-title">Aprende a convertir tus ideas en diseños.</h2>
+      <p class="txt reveal">4 clases pregrabadas + 1 clase especial EN VIVO para aprender Canva, potenciar tu proceso creativo con Claude y crear contenido visual que represente tus ideas.</p>
+      <div class="reveal" style="margin-top:36px;display:flex;justify-content:center">
+        <span class="lockup light">
+          <span class="c">Canva</span>
+          <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#D97757" class="spark-rays-c"></g></svg>
+          <span class="cl">Claude</span>
+        </span>
+      </div>
+      <div class="bigprice reveal" style="margin-top:26px"><span class="num" style="color:#fff">$<span class="js-price">47</span></span><span class="cur">USD</span></div>
+      <p class="payonce reveal">Pago único · Acceso de por vida</p>
+      <div class="reveal" style="margin-top:32px"><a class="btn cta" href="#oferta"><span>QUIERO MI ACCESO POR $<span class="js-price">47</span></span> <span class="arw">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <span class="lockup light" style="scale:1"><span class="c">Canva</span>
+        <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#D97757" class="spark-rays-c"></g></svg>
+        <span class="cl">Claude</span></span>
+      <p style="margin-top:18px;max-width:320px;color:rgba(255,255,255,.5);font-size:.9rem">Taller online para aprender a diseñar con Canva y potenciar tu proceso creativo con Claude. Aprende, crea y monetiza.</p>
+    </div>
+    <nav aria-label="Taller">
+      <h4>Taller</h4>
+      <ul>
+        <li><a href="#contenido">Contenido</a></li>
+        <li><a href="#clase-en-vivo">Clase en vivo</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#oferta">Comprar</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Legal">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Términos y condiciones</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap fbottom">
+    <p>© 2026 · Taller Aprende y monetiza con Canva · Canva + Claude</p>
+    <p>Diseño + inteligencia artificial · Pago único</p>
+  </div>
+</footer>
+
+<!-- ══ STICKY MOBILE CTA ══ -->
+<div class="sticky" id="sticky-cta">
+  <a href="#oferta" class="cta">
+    <span style="font-size:.9rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em">Entrar al taller</span>
+    <span class="p"><span>$<span class="js-price">47</span></span> <span aria-hidden="true">→</span></span>
+  </a>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   ⚙️  CONFIGURACIÓN CENTRAL — EDITA AQUÍ Y SOLO AQUÍ
+   ══════════════════════════════════════════════════════════════ */
+window.WORKSHOP = {
+  price: 47,
+  compareAtPrice: 97,          // precio "normal" (promo). null para ocultarlo
+  currency: "USD",
+  checkoutUrl: "#oferta",      // 👉 pega tu enlace real (Hotmart/Stripe/…)
+  liveDate: "Por confirmar",   // 👉 fecha real de la clase EN VIVO
+  liveTime: "Por confirmar",   // 👉 hora real de la clase EN VIVO
+  instructors: [{ name: "Por confirmar", role: "Instructora" }], // 👉
+  testimonials: []             // 👉 añade testimonios REALES: {name, role, quote}
+};
+
+/* ── Datos de contenido ── */
+const MAGIC = [
+  {t:"Magic\nAnimate",g:["#9333EA","#C026D3"],tone:"light"},
+  {t:"Grab Text",g:["#F97316","#FBBF24"],tone:"dark"},
+  {t:"Background\nRemover",g:["#7DD3FC","#BAE6FD"],tone:"dark"},
+  {t:"Brand\nvoice",g:["#EDE9FE","#F5F3FF"],tone:"dark"},
+  {t:"Magic\nEdit",g:["#DB2777","#9333EA"],tone:"light"},
+  {t:"Text to\nimage",g:["#7C3AED","#4C1D95"],tone:"light"},
+  {t:"Magic\nSwitch",g:["#4C1D95","#5B21B6"],tone:"light"},
+  {t:"Upload your\nown media",g:["#FDA4AF","#FDBA74"],tone:"dark"},
+  {t:"Image\nto video",g:["#8B1F9E","#A21CAF"],tone:"light"},
+  {t:"Flourish\ncharts",g:["#FB7185","#F87171"],tone:"dark"},
+  {t:"Magic\nDesign",g:["#EF4444","#F97316"],tone:"light"},
+  {t:"Swap\nlanguages",g:["#A5B4FC","#C7D2FE"],tone:"dark"}
+];
+
+const CHIPS = [
+  ["01","Estás comenzando","Quieres aprender Canva desde cero sin sentirte abrumado."],
+  ["02","Tienes una marca personal","Quieres que tu contenido represente mejor quién eres."],
+  ["03","Tienes un negocio","Quieres crear contenido más profesional."],
+  ["04","Creas contenido","Quieres mejorar posts, carruseles, stories y presentaciones."],
+  ["05","Quieres una habilidad digital","Una herramienta aplicable a distintos proyectos."],
+  ["06","Quieres utilizar IA","Combinar diseño + inteligencia artificial en tu proceso."]
+];
+
+const PAIN = [
+  "Tardas horas diseñando y nunca estás conforme con el resultado.",
+  "Usas plantillas genéricas que no representan tu marca.",
+  "Sientes que tu contenido no llama la atención y pasa desapercibido.",
+  "Sabes lo básico de Canva, pero nadie te enseñó a diseñar con estrategia.",
+  "No sabes cómo usar la IA para crear contenido más rápido y efectivo."
+];
+
+const BENTO = [
+  ["Marca personal",["#7C3AED","#C026D3"],["Moodboards","Brand Kits","Paletas","Media kits"]],
+  ["Social media",["#2563EB","#06B6D4"],["Carruseles","Posts","Stories","Portadas","Reels covers"]],
+  ["Productos digitales",["#0D9488","#22C55E"],["Ebooks","Guías","Workbooks","Checklists","Plantillas"]],
+  ["Negocios",["#F59E0B","#EF4444"],["Presentaciones","Flyers","Propuestas","Catálogos","Material"]]
+];
+
+const OUTCOMES = [
+  "Dominar Canva de verdad para crear diseños que destacan.",
+  "Diseñar con intención usando una dirección visual clara.",
+  "Convertir tu contenido en ventas reales porque ahora transmite valor y autoridad.",
+  "Dejar de perder tiempo y ejecutar con claridad.",
+  "Construir tu identidad visual coherente y reconocible.",
+  "Integrar IA (Claude) como copiloto de tus ideas."
+];
+
+const MODULES = [
+  ["01","Canva desde cero",["Interfaz y proyectos","Herramientas esenciales","Elementos, imágenes y texto","Capas, posición y alineación","Espaciado y composición"],"Deja de sentirte perdido dentro de Canva y empieza a diseñar con seguridad."],
+  ["02","Diseño que capta la atención",["Jerarquía visual","Colores, paletas y contraste","Tipografía y combinaciones","Espaciado y alineación","Coherencia visual"],"Entiende por qué un diseño funciona y aplícalo a tus propias piezas."],
+  ["03","Canva Pro + herramientas que aceleran tu proceso",["Canva Pro y Brand Kit","Background Remover","Redimensionamiento","Recursos premium","Funciones de IA y Magic Studio cuando aplique"],"Crea más rápido sin sacrificar calidad."],
+  ["04","Convierte Canva en una habilidad monetizable",["Marca personal y contenido","Servicios digitales","Presentaciones y material promocional","Productos digitales","Recursos descargables"],"Cuando aprendes una habilidad digital, empiezas a ver oportunidades."]
+];
+
+const LIVE = [
+  ["Bloque 01 · Canva + Claude","Descubre cómo unir Canva + Claude en un mismo proceso creativo.",["Desarrollar conceptos visuales","Organizar información","Crear briefs creativos","Estructurar piezas"],["Idea","Claude","Concepto","Canva","Diseño","Resultado"]],
+  ["Bloque 02 · Marca personal","De una idea a una identidad visual.",["Concepto creativo","Moodboard y dirección","Paleta y tipografías","Brand Kit"],["Info","Claude","Concepto","Paleta","Canva","Identidad"]],
+  ["Bloque 03 · Carruseles de Instagram","Convierte una idea en un carrusel que la gente quiera deslizar.",["Concepto y estructura","Jerarquía y portada","Composición","CTA visual"],["Idea","Claude","Estructura","Canva","Carrusel"]],
+  ["Bloque 04 · Producto digital","De una idea a un producto digital diseñado por ti.",["Ebook, guía o workbook","Estructura de contenido","Branding del producto","Lead magnet"],["Idea","Claude","Estructura","Canva","Producto"]]
+];
+
+const OBJECTIONS = [
+  ["Pero yo no soy creativo.","No pasa nada. Aprenderás principios y procesos que puedes repetir."],
+  ["Estoy comenzando desde cero.","El taller está diseñado también para principiantes."],
+  ["Ya utilizo Canva.","Podrás fortalecer fundamentos y aprender un proceso más estratégico."],
+  ["No tengo marca personal.","Puedes comenzar a construirla o aplicar lo aprendido a otro proyecto."],
+  ["No tengo producto digital.","Veremos cómo estructurar una idea y llevarla visualmente a Canva."]
+];
+
+const FAQS = [
+  ["¿Necesito experiencia en Canva?","No. Puedes comenzar desde cero."],
+  ["¿Cuántas clases incluye?","4 clases pregrabadas + 1 clase especial EN VIVO de Canva + Claude."],
+  ["¿Cuánto cuesta?","$47 USD, pago único."],
+  ["¿Las cuatro clases son en vivo?","No. Las cuatro clases principales están pregrabadas. Además tendrás una clase especial EN VIVO."],
+  ["¿Qué veremos con Canva + Claude?","Cómo usar ambas herramientas en un proceso creativo para desarrollar conceptos visuales, crear una marca personal, carruseles de Instagram y un producto digital."],
+  ["¿Necesito saber utilizar Claude?","No."],
+  ["¿Necesito Canva Pro?","Muchos conceptos pueden aplicarse en Canva gratuito. También se mostrarán herramientas de Canva Pro cuando corresponda."],
+  ["¿Sirve si tengo negocio?","Sí."],
+  ["¿Sirve si estoy comenzando?","Sí."]
+];
+
+/* Iconos SVG inline (stroke) */
+function ic(paths){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+paths+'</svg>';}
+const ICONS = {
+  play: ic('<circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>'),
+  radio: ic('<circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49M7.76 16.24a6 6 0 010-8.49M19.07 4.93a10 10 0 010 14.14M4.93 19.07a10 10 0 010-14.14"/>'),
+  check: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  spark:ic('<path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/>'),
+  user:ic('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>'),
+  ig:ic('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/>'),
+  file:ic('<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>'),
+  brief:ic('<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>')
+};
+const BENTO_ICONS=[ICONS.user,ICONS.ig,ICONS.file,ICONS.brief];
+
+/* ── Render ── */
+function esc(s){return s.replace(/\n/g,"<br>");}
+
+// spark rays
+function sparkRays(){
+  const rays=[1,.72,.92,.66,1,.74,.9,.68,.98,.7,.88];
+  let s="";rays.forEach((r,i)=>{const len=7+r*40;const a=i*(360/rays.length);
+    s+=`<rect x="46.9" y="${50-len}" width="6.2" height="${len}" rx="3.1" transform="rotate(${a} 50 50)"/>`;});
+  return s;
+}
+(function(){
+  const r=sparkRays();
+  document.getElementById("spark-rays").innerHTML=r;
+  document.querySelectorAll(".spark-rays-c").forEach(g=>g.innerHTML=r);
+})();
+
+// marquee (duplicado para loop seamless)
+(function(){
+  const track=document.getElementById("marquee-track");
+  const build=(hidden)=>MAGIC.map(m=>{
+    const light=m.tone==="light";
+    const tc=light?"#fff":"#17141D";
+    const soft=light?"rgba(255,255,255,.3)":"rgba(255,255,255,.5)";
+    const blob=light?"rgba(255,255,255,.1)":"rgba(255,255,255,.4)";
+    return `<div class="mcard" ${hidden?'aria-hidden="true"':''}><div class="inner" style="background:linear-gradient(140deg,${m.g[0]},${m.g[1]})">
+      <h4 style="color:${tc}">${esc(m.t)}</h4>
+      <span class="blob" style="background:${blob}"></span>
+      <span class="bar" style="background:${soft}"></span>
+      <span class="motif" style="color:${light?'rgba(255,255,255,.9)':'rgba(23,20,29,.8)'}">${ICONS.spark}</span>
+    </div></div>`;}).join("");
+  track.innerHTML=build(false)+build(true);
+})();
+
+// chips
+document.getElementById("chips").innerHTML=CHIPS.map(c=>`
+  <div class="chip"><div class="ic">${ICONS.spark}</div>
+    <span style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:rgba(23,20,29,.15)">${c[0]}</span>
+    <h3 style="margin-top:8px">${c[1]}</h3><p>${c[2]}</p></div>`).join("");
+
+// pain
+document.getElementById("painlist").innerHTML=PAIN.map(p=>`
+  <div class="pain reveal"><span class="x">✕</span><span>${p}</span></div>`).join("");
+
+// bento
+document.getElementById("bento").innerHTML=BENTO.map((b,i)=>`
+  <div class="pcard reveal"><div class="ic" style="background:linear-gradient(135deg,${b[1][0]},${b[1][1]})">${BENTO_ICONS[i]}</div>
+  <h3>${b[0]}</h3><ul>${b[2].map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+
+// outcomes
+document.getElementById("outcomes").innerHTML=OUTCOMES.map(o=>`
+  <div class="oc reveal"><span class="ck">${ICONS.check}</span><span>${o}</span></div>`).join("");
+
+// modules
+document.getElementById("modules").innerHTML=MODULES.map(m=>`
+  <div class="mod reveal">
+    <div><div class="num">${m[0]}</div><div class="lab">Clase ${m[0]}</div></div>
+    <div class="body"><h3>${m[1]}</h3>
+      <ul class="tags">${m[2].map(t=>`<li>${t}</li>`).join("")}</ul>
+      <div class="res"><span class="ck">${ICONS.check}</span><p>${m[3]}</p></div>
+    </div></div>`).join("");
+
+// live blocks
+function flowChip(s){const l=s.toLowerCase();const cls=l==="claude"?"step claude":l==="canva"?"step canva":"step";return `<span class="${cls}">${s}</span>`;}
+document.getElementById("liveblocks").innerHTML=LIVE.map(b=>`
+  <article class="lblock reveal"><span class="tg">${b[0]}</span><h3>${b[1]}</h3>
+    <ul>${b[2].map(p=>`<li>${p}</li>`).join("")}</ul>
+    <div class="flow">${b[3].map((s,i)=>flowChip(s)+(i<b[3].length-1?'<span class="arw2">→</span>':'')).join("")}</div>
+  </article>`).join("");
+
+// testimonials (real o placeholder)
+(function(){
+  const el=document.getElementById("testimonials");
+  const t=window.WORKSHOP.testimonials||[];
+  if(t.length){
+    el.innerHTML=t.map(x=>`<figure class="pcard reveal" style="margin:0"><div style="color:var(--claude);opacity:.5">${ICONS.spark}</div>
+      <blockquote style="margin:14px 0 0;border:0;padding:0"><p style="font-family:Inter;font-style:normal;font-size:1rem;color:var(--ink)">${x.quote}</p></blockquote>
+      <figcaption style="margin-top:20px;font-size:.85rem"><strong>${x.name}</strong><br><span style="color:var(--muted)">${x.role||""}</span></figcaption></figure>`).join("");
+    document.querySelector('#testimonios .note').style.display="none";
+  }else{
+    el.innerHTML=[0,1,2].map(()=>`<div class="tph reveal" aria-hidden="true">
+      <div class="q">${ICONS.spark}</div>
+      <div class="ln" style="width:100%"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:78%"></div>
+      <div class="foot"><span class="av"></span><span><span class="ln" style="width:96px;margin:0"></span><span class="ln" style="width:64px;height:9px"></span></span></div>
+    </div>`).join("");
+  }
+})();
+
+// included (oferta)
+document.getElementById("included").innerHTML=`
+  <div class="row"><span class="ic">${ICONS.play}</span><span style="font-weight:500">${window.WORKSHOP.price?4:4} clases pregrabadas</span></div>
+  <div class="row"><span class="ic">${ICONS.radio}</span><span style="font-weight:500">1 clase especial EN VIVO · Canva + Claude</span></div>`;
+
+// accordions
+function renderAcc(id,data){
+  document.getElementById(id).innerHTML=data.map((d,i)=>`
+    <div class="item${i===0&&id==='objections'?' open':''}">
+      <button type="button" aria-expanded="${i===0&&id==='objections'?'true':'false'}">
+        <span class="qh">${d[0]}</span><span class="pm" aria-hidden="true">+</span>
+      </button>
+      <div class="panel"><p>${d[1]}</p></div>
+    </div>`).join("");
+}
+renderAcc("objections",OBJECTIONS);
+renderAcc("faqs",FAQS);
+
+document.querySelectorAll(".acc button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const item=btn.parentElement;const panel=item.querySelector(".panel");
+    const open=item.classList.toggle("open");
+    btn.setAttribute("aria-expanded",open);
+    panel.style.maxHeight=open?panel.scrollHeight+"px":0;
+  });
+});
+// abrir el primer objeción por defecto
+(function(){const f=document.querySelector("#objections .item.open .panel");if(f)f.style.maxHeight=f.scrollHeight+"px";})();
+
+/* ── Precio + checkout dinámicos ── */
+(function(){
+  const W=window.WORKSHOP;
+  document.querySelectorAll(".js-price").forEach(e=>e.textContent=W.price);
+  document.querySelectorAll(".js-compare").forEach(e=>e.textContent=W.compareAtPrice);
+  const url=W.checkoutUrl||"#oferta";
+  const external=/^https?:\/\//.test(url);
+  document.querySelectorAll("a.cta").forEach(a=>{
+    a.setAttribute("href",url);
+    if(external){a.setAttribute("target","_blank");a.setAttribute("rel","noopener noreferrer");}
+  });
+  if(!W.compareAtPrice){document.querySelectorAll(".promo").forEach(p=>p.style.display="none");}
+})();
+
+/* ── Header scrolled ── */
+const header=document.getElementById("site-header");
+addEventListener("scroll",()=>{header.classList.toggle("scrolled",scrollY>24);},{passive:true});
+
+/* ── Reveal on scroll ── */
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce){
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+  },{rootMargin:"-70px"});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+}else{document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}
+
+/* ── Sticky mobile CTA (aparece tras el hero, se oculta en el footer) ── */
+(function(){
+  const sticky=document.getElementById("sticky-cta");
+  const hero=document.getElementById("hero");
+  const footer=document.querySelector("footer");
+  let heroVis=true,footVis=false;
+  const upd=()=>sticky.classList.toggle("show",!heroVis&&!footVis);
+  new IntersectionObserver(([e])=>{heroVis=e.isIntersecting;upd();},{threshold:.12}).observe(hero);
+  new IntersectionObserver(([e])=>{footVis=e.isIntersecting;upd();},{threshold:.05}).observe(footer);
+})();
+</script>
+</body>
+</html>
