@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --marquee-duration: 42s;
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --marquee-duration: 30s;
+    }
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Tipografía editorial: números con figuras tabulares donde importa */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background-color: #d97757;
+    color: #fff;
+  }
+
+  /* Focus visible accesible y consistente */
+  :focus-visible {
+    outline: 2px solid #5b21b6;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Contenedor editorial con mucho espacio negativo */
+  .container-editorial {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Máscara de degradado para los extremos del marquee */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
+
+  @media (max-width: 640px) {
+    .marquee-mask {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+      );
+    }
+  }
+
+  /* Pista del marquee: duplicada para loop seamless */
+  .marquee-track {
+    @apply flex w-max items-center will-change-transform;
+  }
+
+  /* Tratamiento sutil para "Canva + Claude" en headlines */
+  .grad-canva {
+    background: linear-gradient(120deg, #5b21b6 0%, #7c3aed 45%, #4f46e5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* ── Reduced motion: detener marquee y animaciones no esenciales ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* El marquee se convierte en galería con scroll manual */
+  .marquee-track {
+    animation: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .marquee-track > * {
+    scroll-snap-align: center;
+  }
+}
