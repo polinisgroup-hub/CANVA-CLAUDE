@@ -1,7 +1,7 @@
 import { Reveal } from '../ui/RevealText'
-import { PrimaryCTA } from '../ui/PrimaryCTA'
+import { SparkleButton } from '@/components/ui/button-8'
 import { BrandLockup } from '../ui/BrandLockup'
-import { workshopConfig } from '../../config/workshop'
+import { getCheckoutUrl, workshopConfig } from '../../config/workshop'
 
 /**
  * CTA final casi fullscreen con gradiente violeta + azul profundo.
@@ -69,9 +69,11 @@ export function FinalCTA() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <PrimaryCTA className="mt-8" size="lg">
-              QUIERO MI ACCESO POR ${price}
-            </PrimaryCTA>
+            <div className="mt-8 flex justify-center">
+              <SparkleButton href={getCheckoutUrl()}>
+                QUIERO MI ACCESO POR ${price}
+              </SparkleButton>
+            </div>
           </Reveal>
         </div>
       </div>

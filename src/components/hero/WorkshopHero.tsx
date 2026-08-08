@@ -9,10 +9,10 @@ import {
 import MarqueeAlongSvgPath from '@/components/ui/marquee-along-svg-path'
 import { CanvaMagicMarquee } from './CanvaMagicMarquee'
 import { CanvaMagicCard } from './CanvaMagicCard'
-import { PrimaryCTA } from '../ui/PrimaryCTA'
+import { SparkleButton } from '@/components/ui/button-8'
 import { ClaudeSpark } from '../ui/ClaudeSpark'
 import { magicCards } from '../../config/magicCards'
-import { priceLabel, workshopConfig } from '../../config/workshop'
+import { getCheckoutUrl, priceLabel, workshopConfig } from '../../config/workshop'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -182,9 +182,9 @@ export const WorkshopHero = forwardRef<HTMLElement>(function WorkshopHero(
                   <span className="text-claude" aria-hidden="true">•</span>
                   <span className="text-ink">{priceLabel}</span>
                 </p>
-                <PrimaryCTA size="lg">
+                <SparkleButton href={getCheckoutUrl()}>
                   QUIERO ENTRAR POR ${workshopConfig.price}
-                </PrimaryCTA>
+                </SparkleButton>
               </div>
             </motion.div>
           </div>
@@ -199,9 +199,9 @@ export const WorkshopHero = forwardRef<HTMLElement>(function WorkshopHero(
                 <span className="text-claude" aria-hidden="true">•</span>
                 <span className="text-ink">{priceLabel}</span>
               </p>
-              <PrimaryCTA size="lg">
+              <SparkleButton href={getCheckoutUrl()}>
                 QUIERO ENTRAR POR ${workshopConfig.price}
-              </PrimaryCTA>
+              </SparkleButton>
             </div>
           </>
         )}

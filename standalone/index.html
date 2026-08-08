@@ -89,6 +89,22 @@
   .btn.ghost-head{display:none}
   @media(min-width:640px){.btn.ghost-head{display:inline-flex}}
 
+  /* ── Botón con destellos (versión CSS del componente button-8) ── */
+  @keyframes sparkle{0%,100%{opacity:.75;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+  .btn-sparkle{position:relative;display:inline-block;border-radius:999px;padding:3px;text-decoration:none;
+    background:linear-gradient(90deg,rgba(91,33,182,.4),rgba(124,58,237,.4) 45%,rgba(217,119,87,.4));
+    box-shadow:0 14px 40px -10px rgba(124,58,237,.5);transition:transform .3s var(--ease)}
+  .btn-sparkle:hover{transform:scale(1.04)}
+  .btn-sparkle .inner{position:relative;display:inline-flex;align-items:center;gap:10px;border-radius:999px;
+    padding:14px 26px;color:#fff;font-weight:700;font-size:1rem;overflow:visible;
+    background:linear-gradient(90deg,#5B21B6,#7c3aed 45%,#D97757)}
+  .btn-sparkle .star{fill:#fff;flex:0 0 auto}
+  .btn-sparkle .star-main{width:20px;height:20px;transform:translateY(-1px);animation:sparkle 2s ease-in-out infinite}
+  .btn-sparkle .s2,.btn-sparkle .s3,.btn-sparkle .s4{position:absolute;fill:#fff;animation:sparkle 2s ease-in-out infinite}
+  .btn-sparkle .s2{width:8px;height:8px;left:16px;bottom:9px;transform:rotate(12deg);animation-delay:1s}
+  .btn-sparkle .s3{width:5px;height:5px;left:26px;top:9px;transform:rotate(-12deg);animation-delay:1.5s;animation-duration:2.5s}
+  .btn-sparkle .s4{width:6px;height:6px;left:14px;top:12px;animation-delay:.5s;animation-duration:2.5s}
+
   /* ── Hero ── */
   .hero{padding-top:130px;text-align:center}
   .hero .halo{position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(760px,90%);height:480px;
@@ -480,7 +496,13 @@
         <span>1 clase EN VIVO</span><span class="dot">•</span>
         <span class="price">$<span class="js-price">47</span> USD</span>
       </p>
-      <a class="btn cta" href="#oferta"><span>QUIERO ENTRAR POR $<span class="js-price">47</span></span> <span class="arw" aria-hidden="true">→</span></a>
+      <a class="btn-sparkle cta" href="#oferta"><span class="inner">
+        <svg class="star star-main" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <span>QUIERO ENTRAR POR $<span class="js-price">47</span></span>
+        <svg class="star s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <svg class="star s3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <svg class="star s4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+      </span></a>
     </div>
   </div>
 
@@ -682,7 +704,13 @@
       </div>
       <div class="bigprice reveal" style="margin-top:26px"><span class="num" style="color:#fff">$<span class="js-price">47</span></span><span class="cur">USD</span></div>
       <p class="payonce reveal">Pago único · Acceso de por vida</p>
-      <div class="reveal" style="margin-top:32px"><a class="btn cta" href="#oferta"><span>QUIERO MI ACCESO POR $<span class="js-price">47</span></span> <span class="arw">→</span></a></div>
+      <div class="reveal" style="margin-top:32px"><a class="btn-sparkle cta" href="#oferta"><span class="inner">
+        <svg class="star star-main" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <span>QUIERO MI ACCESO POR $<span class="js-price">47</span></span>
+        <svg class="star s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <svg class="star s3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <svg class="star s4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+      </span></a></div>
     </div>
   </div>
 </section>

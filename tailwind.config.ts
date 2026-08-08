@@ -56,10 +56,15 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        sparkle: {
+          '0%, 100%': { opacity: '0.75', transform: 'scale(0.9)' },
+          '50%': { opacity: '1', transform: 'scale(1.1)' },
+        },
       },
       animation: {
         'marquee-x': 'marquee-x var(--marquee-duration, 40s) linear infinite',
         'float-slow': 'float-slow 6s ease-in-out infinite',
+        sparkle: 'sparkle 2s ease-in-out infinite',
       },
       transitionTimingFunction: {
         expo: 'cubic-bezier(0.16, 1, 0.3, 1)',
