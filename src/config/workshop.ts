@@ -48,9 +48,8 @@ export const workshopConfig: WorkshopConfig = {
   currency: 'USD',
   paymentType: 'Pago único',
 
-  // ⚠️ EDITAR: pega aquí tu enlace de checkout real.
-  // Mientras esté vacío se usa el ancla interna `#oferta`.
-  checkoutUrl: '#oferta',
+  // Enlace de checkout real (Beacons). Todos los CTA lo usan.
+  checkoutUrl: 'https://shop.beacons.ai/napolinip/274ec424-6f39-492d-aa15-8fdcc087b76a',
 
   // ⚠️ EDITAR: fecha y hora reales de la clase EN VIVO.
   liveDate: 'Por confirmar',
