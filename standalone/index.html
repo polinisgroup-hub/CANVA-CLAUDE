@@ -126,7 +126,7 @@
   .path-stage{position:absolute;left:50%;top:50%;width:996px;height:330px;transform-origin:center center}
   .pcardm{position:absolute;top:0;left:0;width:150px;will-change:offset-distance;backface-visibility:hidden;cursor:grab}
   .pcardm.grabbing{cursor:grabbing}
-  .pc{position:relative;width:150px;aspect-ratio:3/2;border-radius:20px;overflow:hidden;
+  .pc{position:relative;width:150px;aspect-ratio:4/3;border-radius:20px;overflow:hidden;
     box-shadow:0 20px 45px -18px rgba(23,20,29,.4);filter:drop-shadow(0 8px 14px rgba(23,20,29,.12))}
   .pc h5{position:absolute;left:12px;top:9px;margin:0;font-size:.82rem;font-weight:800;line-height:1.05;letter-spacing:-.01em;white-space:pre-line;z-index:2}
   .pc .pmotif{position:absolute;right:9px;bottom:8px;width:26px;height:26px;opacity:.85}
@@ -186,6 +186,25 @@
   .inst-av img{width:100%;height:100%;object-fit:cover}
   .inst-name{display:block;font-weight:700;font-size:1.1rem;color:var(--ink)}
   .inst-role{display:block;color:var(--muted);font-size:.9rem;margin-top:2px}
+  .inst-wa{display:inline-flex;align-items:center;gap:6px;margin-top:8px;color:#128C4A;font-weight:600;font-size:.85rem;text-decoration:none}
+  .inst-wa:hover{opacity:.8}
+
+  /* ── Testimonios: columnas animadas verticales ── */
+  .testi-cols{margin-top:52px;display:grid;grid-template-columns:1fr;gap:20px;height:620px;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);
+    mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+  @media(min-width:680px){.testi-cols{grid-template-columns:1fr 1fr}}
+  @media(min-width:1000px){.testi-cols{grid-template-columns:1fr 1fr 1fr}}
+  .testi-col{position:relative}
+  .testi-col .track-y{display:flex;flex-direction:column;gap:20px;animation:scrollY var(--dur,26s) linear infinite;will-change:transform}
+  @keyframes scrollY{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  .testi-card{border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(23,20,29,.06);
+    box-shadow:0 16px 40px -22px rgba(91,33,182,.28)}
+  .testi-card img{display:block;width:100%;height:auto}
+  .col-2{display:none}.col-3{display:none}
+  @media(min-width:680px){.col-2{display:block}}
+  @media(min-width:1000px){.col-3{display:block}}
+  @media(prefers-reduced-motion:reduce){.testi-col .track-y{animation:none}.testi-cols{height:auto;mask:none;-webkit-mask:none;grid-auto-rows:min-content}}
 
   /* ── Marquee ── */
   .marquee{position:relative;margin-top:52px;
@@ -197,7 +216,7 @@
   @media(max-width:640px){.track{animation-duration:30s}}
   @keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
   .mcard{flex:0 0 auto;padding:0 14px}
-  .mcard .inner{position:relative;width:250px;aspect-ratio:3/2;border-radius:22px;overflow:hidden;
+  .mcard .inner{position:relative;width:250px;aspect-ratio:4/3;border-radius:22px;overflow:hidden;
     box-shadow:0 18px 50px -20px rgba(23,20,29,.28);box-shadow:0 18px 50px -20px rgba(23,20,29,.28)}
   .mcard h4{position:absolute;left:18px;top:15px;font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.08;white-space:pre-line;z-index:2}
   .mcard .motif{position:absolute;right:14px;bottom:12px;width:46px;height:46px;opacity:.85}
@@ -546,15 +565,15 @@
   </div>
 </section>
 
-<!-- ══ TESTIMONIOS (placeholder honesto) ══ -->
+<!-- ══ TESTIMONIOS (capturas reales en columnas animadas) ══ -->
 <section class="sec" id="testimonios">
   <div class="wrap">
     <div class="center maxw-2 mx-auto">
       <p class="eyebrow reveal"><span class="n">07</span> &nbsp;—&nbsp; Testimonios</p>
-      <h2 class="sec-title reveal" style="margin-top:14px">Ellos ya comenzaron a transformar su forma de crear.</h2>
+      <h2 class="sec-title reveal" style="margin-top:14px">Ellas ya comenzaron a transformar su forma de crear.</h2>
+      <p class="lead reveal" style="margin-top:18px">Mensajes reales de alumnas del taller.</p>
     </div>
-    <div class="tgrid" id="testimonials"></div>
-    <p class="note reveal"><strong style="color:var(--ink)">Sección pendiente:</strong> añade testimonios reales en el bloque <code>window.WORKSHOP.testimonials</code> (no se muestran testimonios inventados).</p>
+    <div class="testi-cols reveal" id="testimonials" aria-label="Testimonios de alumnas"></div>
   </div>
 </section>
 
@@ -685,12 +704,20 @@ window.WORKSHOP = {
   liveDate: "Por confirmar",   // 👉 fecha real de la clase EN VIVO
   liveTime: "Por confirmar",   // 👉 hora real de la clase EN VIVO
   instructors: [
-    { name: "Natasha Polini", role: "Instructora" }, // añade "photo": "assets/brand/natasha.jpg" si tienes foto
-    { name: "Lindamar Mercado", role: "Instructora" }
+    { name: "Natasha Polini", role: "Instructora", whatsapp: "13464255205" }, // añade "photo": "assets/brand/natasha.jpg" si tienes foto
+    { name: "Lindamar Mercado", role: "Instructora", whatsapp: "19174235383" }
   ],
-  // 👉 WhatsApp: pon tu número con código de país (solo dígitos), ej: "521XXXXXXXXXX"
-  whatsapp: { number: "", message: "Hola 👋, tengo dudas sobre el Taller Canva + Claude." },
-  testimonials: []             // 👉 añade testimonios REALES: {name, role, quote}
+  // Botón flotante de WhatsApp → contacto principal (Natasha).
+  whatsapp: { number: "13464255205", message: "Hola 👋, tengo dudas sobre el Taller Canva + Claude." },
+  // Testimonios reales (capturas). Para añadir más: sube la imagen a
+  // assets/testimonials/ y agrega su ruta aquí.
+  testimonials: [
+    "assets/testimonials/1.png","assets/testimonials/2.png","assets/testimonials/3.png",
+    "assets/testimonials/4.png","assets/testimonials/5.png","assets/testimonials/6.png",
+    "assets/testimonials/7.png","assets/testimonials/8.png","assets/testimonials/9.png",
+    "assets/testimonials/10.png","assets/testimonials/11.png","assets/testimonials/12.png",
+    "assets/testimonials/13.png","assets/testimonials/14.png"
+  ]
 };
 
 /* ── Datos de contenido ──
@@ -698,12 +725,12 @@ window.WORKSHOP = {
    (junto a este index.html). Si el archivo no existe, la card usa el
    diseño CSS automáticamente (onerror). */
 const MAGIC = [
-  {t:"Magic\nAnimate",g:["#9333EA","#C026D3"],tone:"light",img:"assets/canva-magic/magic-animate.jpg"},
-  {t:"Grab Text",g:["#F97316","#FBBF24"],tone:"dark",img:"assets/canva-magic/grab-text.jpg"},
-  {t:"Background\nRemover",g:["#7DD3FC","#BAE6FD"],tone:"dark",img:"assets/canva-magic/background-remover.jpg"},
-  {t:"Magic\nEdit",g:["#DB2777","#9333EA"],tone:"light",img:"assets/canva-magic/magic-edit.jpg"},
-  {t:"Magic\nSwitch",g:["#4C1D95","#5B21B6"],tone:"light",img:"assets/canva-magic/magic-switch.jpg"},
-  {t:"Text to\nimage",g:["#7C3AED","#4C1D95"],tone:"light",img:"assets/canva-magic/text-to-image.jpg"},
+  {t:"Magic\nAnimate",g:["#9333EA","#C026D3"],tone:"light",img:"assets/canva-magic/magic-animate.png"},
+  {t:"Grab Text",g:["#F97316","#FBBF24"],tone:"dark",img:"assets/canva-magic/grab-text.png"},
+  {t:"Background\nRemover",g:["#7DD3FC","#BAE6FD"],tone:"dark",img:"assets/canva-magic/background-remover.png"},
+  {t:"Magic\nEdit",g:["#DB2777","#9333EA"],tone:"light",img:"assets/canva-magic/magic-edit.png"},
+  {t:"Magic\nSwitch",g:["#4C1D95","#5B21B6"],tone:"light",img:"assets/canva-magic/magic-switch.png"},
+  {t:"Text to\nimage",g:["#7C3AED","#4C1D95"],tone:"light",img:"assets/canva-magic/text-to-image.png"},
   {t:"Brand\nvoice",g:["#EDE9FE","#F5F3FF"],tone:"dark"},
   {t:"Magic\nDesign",g:["#EF4444","#F97316"],tone:"light"},
   {t:"Upload your\nown media",g:["#FDA4AF","#FDBA74"],tone:"dark"},
@@ -935,7 +962,10 @@ function sparkRays(){
     const av=p.photo
       ? `<span class="inst-av"><img src="${p.photo}" alt="${p.name}" loading="lazy" onerror="this.parentElement.textContent='${initials}';this.parentElement.style.background='linear-gradient(135deg,${g[0]},${g[1]})'"></span>`
       : `<span class="inst-av" style="background:linear-gradient(135deg,${g[0]},${g[1]})">${initials}</span>`;
-    return `<div class="inst reveal">${av}<div><span class="inst-name">${p.name}</span><span class="inst-role">${p.role||"Instructora"}</span></div></div>`;
+    const waNum=(p.whatsapp||"").replace(/\D/g,"");
+    const waMsg=encodeURIComponent("Hola "+p.name.split(" ")[0]+" 👋, tengo dudas sobre el Taller Canva + Claude.");
+    const wa=waNum?`<a class="inst-wa" href="https://wa.me/${waNum}?text=${waMsg}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>WhatsApp</a>`:"";
+    return `<div class="inst reveal">${av}<div><span class="inst-name">${p.name}</span><span class="inst-role">${p.role||"Instructora"}</span>${wa}</div></div>`;
   }).join("");
 })();
 
@@ -984,22 +1014,22 @@ document.getElementById("liveblocks").innerHTML=LIVE.map(b=>`
     <div class="flow">${b[3].map((s,i)=>flowChip(s)+(i<b[3].length-1?'<span class="arw2">→</span>':'')).join("")}</div>
   </article>`).join("");
 
-// testimonials (real o placeholder)
+// testimonials (capturas reales en columnas animadas verticales)
 (function(){
   const el=document.getElementById("testimonials");
-  const t=window.WORKSHOP.testimonials||[];
-  if(t.length){
-    el.innerHTML=t.map(x=>`<figure class="pcard reveal" style="margin:0"><div style="color:var(--claude);opacity:.5">${ICONS.spark}</div>
-      <blockquote style="margin:14px 0 0;border:0;padding:0"><p style="font-family:Inter;font-style:normal;font-size:1rem;color:var(--ink)">${x.quote}</p></blockquote>
-      <figcaption style="margin-top:20px;font-size:.85rem"><strong>${x.name}</strong><br><span style="color:var(--muted)">${x.role||""}</span></figcaption></figure>`).join("");
-    document.querySelector('#testimonios .note').style.display="none";
-  }else{
-    el.innerHTML=[0,1,2].map(()=>`<div class="tph reveal" aria-hidden="true">
-      <div class="q">${ICONS.spark}</div>
-      <div class="ln" style="width:100%"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:78%"></div>
-      <div class="foot"><span class="av"></span><span><span class="ln" style="width:96px;margin:0"></span><span class="ln" style="width:64px;height:9px"></span></span></div>
-    </div>`).join("");
-  }
+  const t=(window.WORKSHOP.testimonials||[]).map(x=>typeof x==="string"?x:x.image);
+  if(!t.length){ el.remove(); return; }
+  // reparte en 3 columnas
+  const cols=[[],[],[]];
+  t.forEach((src,i)=>cols[i%3].push(src));
+  const durs=["30s","38s","34s"];
+  const card=src=>`<div class="testi-card"><img src="${src}" alt="Testimonio de alumna del taller" loading="lazy" decoding="async"></div>`;
+  el.innerHTML=cols.map((col,ci)=>{
+    // duplica la secuencia para loop seamless (translateY -50%)
+    const inner=col.map(card).join("")+col.map(card).join("");
+    const hideCls=ci===1?"col-2":ci===2?"col-3":"";
+    return `<div class="testi-col ${hideCls}"><div class="track-y" style="--dur:${durs[ci]}">${inner}</div></div>`;
+  }).join("");
 })();
 
 // included (oferta)

@@ -17,6 +17,8 @@ export interface Instructor {
   role: string
   /** Ruta opcional a la foto (p. ej. /brand/natasha.jpg). Si falta, se usa monograma. */
   photo?: string
+  /** WhatsApp de la instructora (solo dígitos con código de país). */
+  whatsapp?: string
 }
 
 export interface WhatsAppConfig {
@@ -68,13 +70,13 @@ export const workshopConfig: WorkshopConfig = {
   liveClasses: 1,
 
   instructors: [
-    { name: 'Natasha Polini', role: 'Instructora' },
-    { name: 'Lindamar Mercado', role: 'Instructora' },
+    { name: 'Natasha Polini', role: 'Instructora', whatsapp: '13464255205' },
+    { name: 'Lindamar Mercado', role: 'Instructora', whatsapp: '19174235383' },
   ],
 
-  // ⚠️ EDITAR: pon tu número de WhatsApp con código de país (solo dígitos).
+  // Botón flotante de WhatsApp → contacto principal (Natasha).
   whatsapp: {
-    number: '',
+    number: '13464255205',
     message: 'Hola 👋, tengo dudas sobre el Taller Canva + Claude.',
   },
 }

@@ -46,7 +46,7 @@ export function CanvaMagicCard({ card, size = 'default' }: CanvaMagicCardProps) 
       >
         {/* Diseño CSS base (siempre presente) */}
         <div
-          className="relative aspect-[3/2] w-full overflow-hidden"
+          className="relative aspect-[4/3] w-full overflow-hidden"
           style={{
             backgroundImage: `linear-gradient(140deg, ${gradient[0]}, ${gradient[1]})`,
           }}
