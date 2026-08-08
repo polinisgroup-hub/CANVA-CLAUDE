@@ -1,10 +1,14 @@
 import { ClaudeSpark } from './ClaudeSpark'
 
 /**
- * Logo del taller: "Canva ✳ Claude".
- *  • "Canva" en tipografía script
- *  • spark de Claude (acento naranja) en el centro
- *  • "Claude" en sans redondeada
+ * Logo del taller (fiel al logo oficial):
+ *   Taller online
+ *   Canva ✳ Claude          ← "Canva" script · spark naranja · "Claude" sans
+ *   ───────── (subrayado naranja)
+ *   APRENDE CREA Y MONETIZA
+ *
+ * `full` muestra la composición completa (para footer / CTA final).
+ * Sin `full` muestra solo el lockup "Canva ✳ Claude" (header / hero).
  * Adaptable a fondos claros (tone="dark") u oscuros (tone="light").
  */
 
@@ -12,7 +16,7 @@ interface BrandLockupProps {
   /** Tono del texto: "dark" para fondos claros, "light" para fondos oscuros */
   tone?: 'dark' | 'light'
   className?: string
-  /** Muestra el eyebrow "Taller online" y el tagline inferior */
+  /** Muestra "Taller online", el subrayado y el tagline inferior */
   full?: boolean
 }
 
@@ -22,20 +26,19 @@ export function BrandLockup({
   full = false,
 }: BrandLockupProps) {
   const textColor = tone === 'light' ? 'text-white' : 'text-ink'
-  const lineColor = tone === 'light' ? 'bg-white/25' : 'bg-claude/40'
-  const subColor = tone === 'light' ? 'text-white/60' : 'text-muted'
+  const subColor = tone === 'light' ? 'text-white/70' : 'text-muted'
 
   return (
     <div className={`inline-flex flex-col items-center ${className}`}>
       {full && (
         <span
-          className={`mb-1 text-[0.62rem] font-semibold uppercase tracking-[0.35em] ${subColor}`}
+          className={`mb-1.5 font-sans text-xl font-bold leading-none tracking-tight sm:text-2xl ${textColor}`}
         >
           Taller online
         </span>
       )}
       <span className="flex items-center gap-2 sm:gap-3">
-        <span className={`font-script text-3xl leading-none sm:text-4xl ${textColor}`}>
+        <span className={`font-script text-3xl font-bold leading-none sm:text-4xl ${textColor}`}>
           Canva
         </span>
         <ClaudeSpark className="h-6 w-6 shrink-0 sm:h-7 sm:w-7" title="Canva + Claude" />
@@ -47,11 +50,14 @@ export function BrandLockup({
       </span>
       {full && (
         <>
-          <span className={`mt-2 h-px w-40 ${lineColor}`} aria-hidden="true" />
           <span
-            className={`mt-2 text-[0.6rem] font-medium uppercase tracking-[0.3em] ${subColor}`}
+            className="mt-2 h-[2px] w-52 max-w-full rounded-full bg-claude"
+            aria-hidden="true"
+          />
+          <span
+            className={`mt-2 text-[0.68rem] font-semibold uppercase tracking-[0.3em] ${subColor}`}
           >
-            Aprende · Crea · Monetiza
+            Aprende crea y monetiza
           </span>
         </>
       )}
