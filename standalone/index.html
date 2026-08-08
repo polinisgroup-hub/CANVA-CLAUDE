@@ -108,6 +108,48 @@
   .microinfo .dot{color:var(--claude)}
   .microinfo .price{color:var(--ink)}
 
+  /* ── Hero 3D ── */
+  .hero3d{min-height:100vh;background:radial-gradient(120% 90% at 50% -10%,#F4F0FF 0%,#FBFAFF 45%,#FFFFFF 100%)}
+  .hero3d .halo{display:none}
+  .glass{background:rgba(255,255,255,.5)!important;border:1px solid rgba(255,255,255,.6)!important;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .orb{position:absolute;border-radius:999px;z-index:0;pointer-events:none;will-change:transform}
+  .orb1{left:-90px;top:120px;width:380px;height:380px;background:rgba(91,33,182,.22);filter:blur(110px)}
+  .orb2{right:-70px;top:170px;width:420px;height:420px;background:rgba(217,119,87,.18);filter:blur(120px)}
+  .orb3{left:50%;top:52%;width:520px;height:300px;transform:translateX(-50%);background:rgba(79,70,229,.14);filter:blur(120px)}
+
+  .stage-wrap{position:relative;z-index:2;margin-top:40px;width:100%;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 100%)}
+  .stage-mount{position:relative;margin:0 auto}
+  /* Escenario del path: tamaño intrínseco del viewBox, escalado por JS */
+  .path-stage{position:absolute;left:50%;top:50%;width:996px;height:330px;transform-origin:center center}
+  .pcardm{position:absolute;top:0;left:0;width:150px;will-change:offset-distance;backface-visibility:hidden;cursor:grab}
+  .pcardm.grabbing{cursor:grabbing}
+  .pc{position:relative;width:150px;aspect-ratio:3/2;border-radius:20px;overflow:hidden;
+    box-shadow:0 20px 45px -18px rgba(23,20,29,.4);filter:drop-shadow(0 8px 14px rgba(23,20,29,.12))}
+  .pc h5{position:absolute;left:12px;top:9px;margin:0;font-size:.82rem;font-weight:800;line-height:1.05;letter-spacing:-.01em;white-space:pre-line;z-index:2}
+  .pc .pmotif{position:absolute;right:9px;bottom:8px;width:26px;height:26px;opacity:.85}
+  .pc .pbar{position:absolute;left:12px;bottom:11px;height:6px;width:44px;border-radius:999px}
+  .pc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3}
+
+  .stage-scrim{position:absolute;inset:0;z-index:15;pointer-events:none;
+    background:radial-gradient(closest-side at 50% 55%,rgba(251,250,255,.94) 0%,rgba(251,250,255,.55) 42%,transparent 74%)}
+  .cta-panel{position:absolute;left:50%;top:52%;z-index:30;transform:translate(-50%,-50%);
+    display:flex;flex-direction:column;align-items:center;gap:16px;border-radius:28px;padding:22px 26px;
+    box-shadow:0 30px 80px -30px rgba(49,46,129,.45)}
+  .cta-panel .microinfo{margin:0}
+
+  .scrollcue{position:relative;z-index:2;margin-top:26px;padding-bottom:48px;display:flex;flex-direction:column;
+    align-items:center;gap:8px;color:var(--muted);font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
+  .scrollcue .mouse{width:20px;height:34px;border:1px solid rgba(23,20,29,.2);border-radius:999px;display:flex;justify-content:center;padding-top:5px}
+  .scrollcue .wheel{width:6px;height:6px;border-radius:999px;background:var(--claude);animation:wheel 1.6s ease-in-out infinite}
+  @keyframes wheel{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(9px);opacity:.4}}
+
+  /* Fallback recto dentro del stage (móvil / reduced-motion) */
+  .stage-mount .marquee{margin-top:0}
+  @media(prefers-reduced-motion:reduce){.scrollcue .wheel{animation:none}}
+
   /* ── Marquee ── */
   .marquee{position:relative;margin-top:52px;
     -webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);
@@ -316,12 +358,15 @@
 
 <main id="top">
 
-<!-- ══ HERO ══ -->
-<section class="hero sec" id="hero" aria-labelledby="hero-title">
-  <div class="halo" aria-hidden="true"></div>
-  <div class="wrap">
+<!-- ══ HERO 3D ══ -->
+<section class="hero sec hero3d" id="hero" aria-labelledby="hero-title">
+  <span class="orb orb1" data-par="1.4" aria-hidden="true"></span>
+  <span class="orb orb2" data-par="-1.2" aria-hidden="true"></span>
+  <span class="orb orb3" aria-hidden="true"></span>
+
+  <div class="wrap" style="position:relative;z-index:2">
     <p class="eyebrow reveal" style="letter-spacing:.35em">Taller online</p>
-    <div class="badge reveal" style="margin-top:14px">
+    <div class="badge glass reveal" style="margin-top:14px">
       <span style="color:var(--claude)">✦</span> 4 clases pregrabadas + 1 clase EN VIVO
       <span style="color:rgba(23,20,29,.2)">·</span> <b>Canva + Claude</b>
     </div>
@@ -336,22 +381,26 @@
     </h1>
     <p class="sub reveal">Genera ingresos desde internet utilizando herramientas digitales, aunque no tengas experiencia previa. Aprende a diseñar contenido profesional con Canva y descubre cómo usar Claude para crear tu marca personal, carruseles para Instagram y productos digitales desde cero.</p>
     <p class="noexp reveal">No necesitas experiencia previa.</p>
-    <p class="microinfo reveal">
-      <span>4 clases pregrabadas</span><span class="dot">•</span>
-      <span>1 clase EN VIVO</span><span class="dot">•</span>
-      <span class="price">$<span class="js-price">47</span> USD</span>
-    </p>
   </div>
 
-  <!-- Marquee de features de Canva con CTA superpuesto -->
-  <div class="marquee reveal" role="group" aria-label="Funciones de Canva Magic Studio">
-    <div class="track" id="marquee-track"></div>
-    <div class="cta-over">
-      <span class="glow" aria-hidden="true"></span>
+  <!-- Escenario del marquee 3D (cards fluyendo por la curva) + CTA glass -->
+  <div class="stage-wrap reveal" id="stage-wrap" role="group" aria-label="Funciones de Canva Magic Studio">
+    <div class="stage-mount" id="stage-mount"><!-- JS: path 3D o marquee recto --></div>
+    <div class="stage-scrim" aria-hidden="true"></div>
+    <div class="cta-panel glass" id="cta-panel">
+      <p class="microinfo" style="margin:0">
+        <span>4 clases pregrabadas</span><span class="dot">•</span>
+        <span>1 clase EN VIVO</span><span class="dot">•</span>
+        <span class="price">$<span class="js-price">47</span> USD</span>
+      </p>
       <a class="btn cta" href="#oferta"><span>QUIERO ENTRAR POR $<span class="js-price">47</span></span> <span class="arw" aria-hidden="true">→</span></a>
     </div>
   </div>
-  <div style="height:60px"></div>
+
+  <div class="scrollcue" aria-hidden="true">
+    <span>Desliza</span>
+    <span class="mouse"><span class="wheel"></span></span>
+  </div>
 </section>
 
 <!-- ══ PROBLEMA ══ -->
@@ -693,23 +742,120 @@ function sparkRays(){
   document.querySelectorAll(".spark-rays-c").forEach(g=>g.innerHTML=r);
 })();
 
-// marquee (duplicado para loop seamless)
+// ── HERO: marquee 3D sobre curva SVG (offset-path) o recto (fallback) ──
 (function(){
-  const track=document.getElementById("marquee-track");
-  const build=(hidden)=>MAGIC.map(m=>{
+  const mount=document.getElementById("stage-mount");
+  const wrap=document.getElementById("stage-wrap");
+  const hero=document.getElementById("hero");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Curva orgánica: las cards se cruzan (z-index rodante) → profundidad 3D.
+  const PATH="M1 209.434C58.5872 255.935 387.926 325.938 482.583 209.434C600.905 63.8051 525.516 -43.2211 427.332 19.9613C329.149 83.1436 352.902 242.723 515.041 267.302C644.752 286.966 943.56 181.94 995 156.5";
+
+  const realImg=(m)=>m.img?`<img src="${m.img}" alt="${m.t.replace('\n',' ')} — función de Canva" loading="lazy" decoding="async" onerror="this.remove()">`:"";
+
+  // Card compacta para el path
+  function pcHTML(m){
     const light=m.tone==="light";
     const tc=light?"#fff":"#17141D";
     const soft=light?"rgba(255,255,255,.3)":"rgba(255,255,255,.5)";
-    const blob=light?"rgba(255,255,255,.1)":"rgba(255,255,255,.4)";
-    const realImg=m.img?`<img src="${m.img}" alt="${m.t.replace('\n',' ')} — función de Canva" loading="lazy" decoding="async" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3">`:"";
-    return `<div class="mcard" ${hidden?'aria-hidden="true"':''}><div class="inner" style="background:linear-gradient(140deg,${m.g[0]},${m.g[1]})">
-      <h4 style="color:${tc}">${esc(m.t)}</h4>
-      <span class="blob" style="background:${blob}"></span>
-      <span class="bar" style="background:${soft}"></span>
-      <span class="motif" style="color:${light?'rgba(255,255,255,.9)':'rgba(23,20,29,.8)'}">${ICONS.spark}</span>
-      ${realImg}
-    </div></div>`;}).join("");
-  track.innerHTML=build(false)+build(true);
+    const motif=light?"rgba(255,255,255,.9)":"rgba(23,20,29,.8)";
+    return `<div class="pc" style="background:linear-gradient(140deg,${m.g[0]},${m.g[1]})">
+      <h5 style="color:${tc}">${esc(m.t)}</h5>
+      <span class="pbar" style="background:${soft}"></span>
+      <span class="pmotif" style="color:${motif}">${ICONS.spark}</span>${realImg(m)}</div>`;
+  }
+
+  // Fallback recto (móvil / reduced-motion): reutiliza el marquee CSS
+  function buildFlat(){
+    const card=(m,hidden)=>{
+      const light=m.tone==="light";
+      const tc=light?"#fff":"#17141D";
+      const soft=light?"rgba(255,255,255,.3)":"rgba(255,255,255,.5)";
+      const blob=light?"rgba(255,255,255,.1)":"rgba(255,255,255,.4)";
+      return `<div class="mcard" ${hidden?'aria-hidden="true"':''}><div class="inner" style="background:linear-gradient(140deg,${m.g[0]},${m.g[1]})">
+        <h4 style="color:${tc}">${esc(m.t)}</h4>
+        <span class="blob" style="background:${blob}"></span>
+        <span class="bar" style="background:${soft}"></span>
+        <span class="motif" style="color:${light?'rgba(255,255,255,.9)':'rgba(23,20,29,.8)'}">${ICONS.spark}</span>
+        ${realImg(m)}
+      </div></div>`;
+    };
+    const seq=MAGIC.map(m=>card(m,false)).join("")+MAGIC.map(m=>card(m,true)).join("");
+    mount.innerHTML=`<div class="marquee"><div class="track">${seq}</div></div>`;
+    mount.style.height="";
+  }
+
+  const use3D=matchMedia("(min-width:768px)").matches && !reduce;
+
+  if(!use3D){ buildFlat(); return; }
+
+  // ── Construye el escenario 3D ──
+  const REPEAT=2;
+  const items=[];
+  for(let r=0;r<REPEAT;r++) for(let i=0;i<MAGIC.length;i++) items.push({m:MAGIC[i],dup:r>0});
+  const N=items.length;
+
+  const stage=document.createElement("div");
+  stage.className="path-stage";
+  const els=items.map((it)=>{
+    const d=document.createElement("div");
+    d.className="pcardm";
+    d.style.offsetPath=`path('${PATH}')`;
+    d.setAttribute("aria-hidden", it.dup?"true":"false");
+    d.innerHTML=pcHTML(it.m);
+    stage.appendChild(d);
+    return d;
+  });
+  mount.appendChild(stage);
+
+  function fit(){
+    const w=wrap.clientWidth||996;
+    const s=Math.min(Math.max(w/996,0.3),1.15);
+    stage.style.transform=`translate(-50%,-50%) scale(${s})`;
+    mount.style.height=(330*s)+"px";
+  }
+  fit();
+  addEventListener("resize",fit,{passive:true});
+
+  const wrapv=(min,max,v)=>{const r=max-min;return ((((v-min)%r)+r)%r)+min;};
+  let base=0, hover=1, hoverT=1, last=performance.now(), dragging=false, dragV=0, lastX=0;
+  const SPEED=6;
+
+  function frame(now){
+    const dt=Math.min(now-last,64); last=now;
+    hover += (hoverT-hover)*0.08;
+    if(dragging){ base+=dragV; dragV*=0.9; }
+    else { base += SPEED*(dt/1000)*hover + dragV; dragV*=0.94; if(Math.abs(dragV)<0.001)dragV=0; }
+    for(let i=0;i<N;i++){
+      const dist=wrapv(0,100, base + (i*100)/N);
+      els[i].style.offsetDistance=dist+"%";
+      els[i].style.zIndex=Math.floor(1+(dist/100)*16);
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Hover: frena; Drag: arrastra la cinta
+  stage.addEventListener("mouseenter",()=>hoverT=0.25);
+  stage.addEventListener("mouseleave",()=>hoverT=1);
+  stage.addEventListener("pointerdown",e=>{
+    dragging=true; lastX=e.clientX; dragV=0;
+    stage.querySelectorAll(".pcardm").forEach(el=>el.classList.add("grabbing"));
+    try{stage.setPointerCapture(e.pointerId);}catch(_){}
+  });
+  addEventListener("pointermove",e=>{ if(!dragging)return; const dx=e.clientX-lastX; lastX=e.clientX; dragV=dx*0.05; });
+  addEventListener("pointerup",()=>{ dragging=false; stage.querySelectorAll(".pcardm").forEach(el=>el.classList.remove("grabbing")); });
+
+  // Parallax de orbes con el mouse (profundidad)
+  hero.addEventListener("pointermove",e=>{
+    const r=hero.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+    hero.querySelectorAll(".orb[data-par]").forEach(o=>{
+      const f=parseFloat(o.dataset.par);
+      o.style.transform=`translate(${px*30*f}px,${py*24*f}px)`;
+    });
+  });
 })();
 
 // chips
