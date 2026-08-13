@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brand Kit — Taller Canva + Claude</title>
+<meta name="description" content="Kit de marca del Taller Canva + Claude: colores, tipografía, logos, gradientes y estética." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#17141D; --muted:#6F6A76; --white:#fff;
+    --lavender:#F4F0FF; --purple:#5B21B6; --purple-deep:#312E81;
+    --claude:#D97757; --claude-hover:#C9684B; --violet:#7c3aed; --indigo:#4338CA;
+    --line:#eae6f2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:"Playfair Display",serif;letter-spacing:-.02em;line-height:1.08;margin:0}
+  .script{font-family:"Dancing Script",cursive}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .eyebrow .n{color:var(--claude)}
+  a{color:var(--purple)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:#f4f2f8;border-radius:5px;padding:2px 6px}
+  .muted{color:var(--muted)}
+
+  /* Hero */
+  header.top{background:radial-gradient(120% 90% at 50% -10%,#F4F0FF 0%,#FBFAFF 45%,#FFFFFF 100%);padding:70px 0 46px;border-bottom:1px solid var(--line)}
+  .lock{display:inline-flex;align-items:center;gap:12px}
+  .lock .c{font-family:"Dancing Script",cursive;font-weight:700;font-size:2.2rem;color:var(--ink);line-height:1}
+  .lock .cl{font-weight:600;font-size:1.75rem;color:var(--ink);line-height:1}
+  .spark{width:30px;height:30px;flex:0 0 auto}
+  h1.title{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;margin-top:26px}
+  .grad{background:linear-gradient(120deg,#5b21b6,#7c3aed 45%,#4f46e5);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);max-width:640px;margin-top:14px;font-size:1.05rem}
+
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:30px}
+  .sec-h h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700}
+
+  /* Swatches */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .sw{border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#fff}
+  .sw:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(23,20,29,.35)}
+  .sw .chip{height:96px}
+  .sw .meta{padding:12px 14px}
+  .sw .name{font-weight:600;font-size:.92rem}
+  .sw .hex{font-family:ui-monospace,monospace;font-size:.82rem;color:var(--muted);text-transform:uppercase}
+  .sw .role{font-size:.75rem;color:var(--muted);margin-top:2px}
+  .copied{color:var(--purple)!important;font-weight:600}
+
+  /* Gradients */
+  .grads{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  .gr{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .gr .band{height:96px}
+  .gr .meta{padding:12px 14px;background:#fff}
+  .gr .name{font-weight:600;font-size:.9rem}
+  .gr .css{font-family:ui-monospace,monospace;font-size:.72rem;color:var(--muted);word-break:break-all;margin-top:4px}
+
+  /* Type */
+  .type-row{padding:22px 0;border-top:1px solid var(--line)}
+  .type-row:first-child{border-top:0}
+  .type-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+  .specimen-display{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;color:var(--ink);margin-top:6px}
+  .specimen-body{font-family:Inter;font-size:1.15rem;margin-top:6px;max-width:640px;color:#2b2733}
+  .specimen-script{font-family:"Dancing Script",cursive;font-weight:700;font-size:clamp(2.4rem,6vw,4rem);color:var(--purple);margin-top:6px}
+  .weights{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;color:var(--ink)}
+  .weights span{font-size:1.1rem}
+
+  /* Logo showcase */
+  .logos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.logos{grid-template-columns:1fr}}
+  .logo-card{border:1px solid var(--line);border-radius:20px;padding:36px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+  .logo-card.dark{background:linear-gradient(140deg,#312E81,#4C1D95 60%,#5B21B6);border:0}
+  .logo-card .cap{font-size:.75rem;color:var(--muted);margin-top:14px}
+  .logo-card.dark .cap{color:rgba(255,255,255,.6)}
+  .lockfull{display:inline-flex;flex-direction:column;align-items:center}
+  .lockfull .t{font-weight:800;font-size:1.4rem;margin-bottom:6px}
+  .lockfull .line{height:2px;width:210px;max-width:100%;background:var(--claude);border-radius:999px;margin-top:8px}
+  .lockfull .tag{font-size:.66rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-top:8px}
+  .on-dark .c,.on-dark .cl,.on-dark .t{color:#fff!important}
+  .on-dark .tag{color:rgba(255,255,255,.7)}
+
+  /* cards / principles */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:680px){.cols{grid-template-columns:1fr}}
+  .panel{border:1px solid var(--line);border-radius:20px;padding:26px}
+  .panel h3{font-family:Inter;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+  .panel.do h3{color:#128C4A}.panel.dont h3{color:#b4453a}
+  .panel ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+  .panel li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;color:#39343f}
+  .panel li::before{content:"";flex:0 0 auto;width:18px;height:18px;border-radius:999px;margin-top:2px}
+  .panel.do li::before{background:rgba(18,140,74,.15)}
+  .panel.dont li::before{background:rgba(180,69,58,.15)}
+
+  .tokens{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .token{border:1px solid var(--line);border-radius:14px;padding:16px}
+  .token .k{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .token .v{font-family:ui-monospace,monospace;font-size:.9rem;margin-top:4px}
+
+  /* buttons demo */
+  .btns{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--claude);color:#fff;font-weight:600;padding:14px 28px;box-shadow:0 14px 40px -10px rgba(217,119,87,.5)}
+  .sparkle{display:inline-block;border-radius:999px;padding:3px;background:linear-gradient(90deg,rgba(91,33,182,.4),rgba(124,58,237,.4) 45%,rgba(217,119,87,.4))}
+  .sparkle .inner{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:13px 24px;color:#fff;font-weight:700;background:linear-gradient(90deg,#5B21B6,#7c3aed 45%,#D97757)}
+  .icon-note{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);margin-top:12px}
+  .icon-chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.85rem}
+
+  footer{padding:40px 0;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="lock">
+      <span class="c">Canva</span>
+      <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#D97757" class="rays"></g></svg>
+      <span class="cl">Claude</span>
+    </span>
+    <p class="eyebrow" style="margin-top:22px">Brand Kit · Manual de marca</p>
+    <h1 class="title">Taller online <span class="grad">Canva + Claude</span></h1>
+    <p class="sub">Guía visual del taller: colores, tipografía, logo, gradientes y principios de estética. Todo lo que define la identidad “premium, editorial y creativa” de la landing.</p>
+  </div>
+</header>
+
+<!-- COLORES -->
+<section id="colores">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow"><span class="n">01</span></span><h2>Paleta de color</h2></div>
+    <p class="muted" style="margin:-14px 0 24px">Haz clic en cualquier color para copiar su código HEX.</p>
+    <div class="swatches" id="swatches"></div>
+  </div>
+</section>
+
+<!-- GRADIENTES -->
+<section id="gradientes">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow"><span class="n">02</span></span><h2>Gradientes</h2></div>
+    <div class="grads" id="grads"></div>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section id="tipografia">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow"><span class="n">03</span></span><h2>Tipografía</h2></div>
+
+    <div class="type-row">
+      <span class="type-label">Display · Playfair Display (serif) — titulares</span>
+      <div class="specimen-display">Aprende y monetiza con Canva</div>
+      <div class="weights" style="font-family:'Playfair Display',serif">
+        <span style="font-weight:400">Regular 400</span>
+        <span style="font-weight:600">SemiBold 600</span>
+        <span style="font-weight:700">Bold 700</span>
+        <span style="font-weight:800">Black 800</span>
+        <span style="font-style:italic">Italic</span>
+      </div>
+      <p class="muted" style="margin-top:10px;font-size:.9rem">Uso: H1–H3, frases editoriales. Tracking negativo (−0.02em), <code>text-wrap: balance</code>.</p>
+    </div>
+
+    <div class="type-row">
+      <span class="type-label">Texto / UI · Inter (sans-serif)</span>
+      <div class="specimen-body">Diseña contenido profesional con Canva y potencia tus ideas con Claude para crear tu marca, carruseles y productos digitales.</div>
+      <div class="weights">
+        <span style="font-weight:300">Light 300</span>
+        <span style="font-weight:400">Regular 400</span>
+        <span style="font-weight:500">Medium 500</span>
+        <span style="font-weight:600">SemiBold 600</span>
+        <span style="font-weight:700">Bold 700</span>
+        <span style="font-weight:800">ExtraBold 800</span>
+      </div>
+      <p class="muted" style="margin-top:10px;font-size:.9rem">Uso: párrafos, botones, etiquetas, navegación. Eyebrows en mayúsculas con tracking 0.28em.</p>
+    </div>
+
+    <div class="type-row">
+      <span class="type-label">Script · Dancing Script — solo la palabra “Canva” del logo</span>
+      <div class="specimen-script">Canva</div>
+      <p class="muted" style="margin-top:10px;font-size:.9rem">Uso exclusivo del wordmark. No usar en párrafos ni titulares.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section id="logo">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow"><span class="n">04</span></span><h2>Logo</h2></div>
+    <p class="muted" style="margin:-14px 0 24px">Lockup “Canva ✳ Claude”: <b>Canva</b> en script, el <b>spark</b> naranja de Claude (acento #D97757) y <b>Claude</b> en sans. Adaptable a fondo claro u oscuro.</p>
+    <div class="logos">
+      <div class="logo-card">
+        <span class="lockfull">
+          <span class="t" style="color:var(--ink)">Taller online</span>
+          <span class="lock"><span class="c">Canva</span><svg class="spark" viewBox="0 0 100 100"><g fill="#D97757" class="rays"></g></svg><span class="cl">Claude</span></span>
+          <span class="line"></span>
+          <span class="tag muted">Aprende crea y monetiza</span>
+        </span>
+        <span class="cap">Versión completa · fondo claro</span>
+      </div>
+      <div class="logo-card dark on-dark">
+        <span class="lockfull">
+          <span class="t">Taller online</span>
+          <span class="lock"><span class="c">Canva</span><svg class="spark" viewBox="0 0 100 100"><g fill="#D97757" class="rays"></g></svg><span class="cl">Claude</span></span>
+          <span class="line"></span>
+          <span class="tag">Aprende crea y monetiza</span>
+        </span>
+        <span class="cap">Versión completa · fondo oscuro</span>
+      </div>
+    </div>
+
+    <div class="logos" style="margin-top:18px">
+      <div class="logo-card">
+        <span class="lock"><span class="c">Canva</span><svg class="spark" viewBox="0 0 100 100"><g fill="#D97757" class="rays"></g></svg><span class="cl">Claude</span></span>
+        <span class="cap">Lockup compacto (header / hero)</span>
+      </div>
+      <div class="logo-card">
+        <svg width="64" height="64" viewBox="0 0 100 100" aria-label="Spark de Claude"><g fill="#D97757" class="rays"></g></svg>
+        <span class="cap">Isotipo · el spark de Claude (favicon)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTONES / ICONOS -->
+<section id="componentes">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow"><span class="n">05</span></span><h2>Botones e iconografía</h2></div>
+    <div class="btns">
+      <span class="pill">QUIERO ENTRAR POR $47 →</span>
+      <span class="sparkle"><span class="inner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        QUIERO ENTRAR POR $47</span></span>
+    </div>
+    <p class="muted" style="margin-top:16px;font-size:.92rem">CTA principal: píldora naranja (acento Claude). CTA “momento wow”: botón con destellos (gradiente morado→Claude). Radios <code>rounded-full</code> / <code>rounded-3xl</code>, sombras suaves, hover con escala 1.02–1.04 y easing <code>cubic-bezier(0.16,1,0.3,1)</code>.</p>
+    <div class="icon-note">
+      <span class="icon-chip">Iconografía: <b>Lucide</b> (línea)</span>
+      <span class="icon-chip">Sin emojis como iconos</span>
+      <span class="icon-chip">Fotos / cards como protagonistas</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESTETICA -->
+<section id="estetica">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow"><span class="n">06</span></span><h2>Estética y formato</h2></div>
+    <div class="cols">
+      <div class="panel do">
+        <h3>Sí — la marca es</h3>
+        <ul>
+          <li>Premium, editorial, femenina y sofisticada (creative-tech).</li>
+          <li>Mucho espacio negativo y jerarquía tipográfica fuerte.</li>
+          <li>Imágenes protagonistas (cards de Canva, testimonios).</li>
+          <li>Un solo color de acción: el naranja Claude.</li>
+          <li>Animaciones intencionales: reveals, marquee, destellos.</li>
+          <li>Alternancia de fondos: blanco → lavanda → morado → oscuro → gradiente.</li>
+        </ul>
+      </div>
+      <div class="panel dont">
+        <h3>No — evitar</h3>
+        <ul>
+          <li>Aspecto de plantilla o de Hotmart genérico.</li>
+          <li>Estética infantil o de SaaS corporativo.</li>
+          <li>Convertir toda la web en violeta.</li>
+          <li>Sucesión interminable de cards idénticas.</li>
+          <li>Escasez falsa, countdowns o descuentos inventados.</li>
+          <li>Emojis como iconos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:Inter;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;margin:28px 0 14px">Tokens de diseño</h3>
+    <div class="tokens">
+      <div class="token"><div class="k">Radios</div><div class="v">16px / 24px / 999px</div></div>
+      <div class="token"><div class="k">Easing</div><div class="v">cubic-bezier(.16,1,.3,1)</div></div>
+      <div class="token"><div class="k">Sombra CTA</div><div class="v">0 14px 40px -10px claude/50</div></div>
+      <div class="token"><div class="k">Sombra card</div><div class="v">0 18px 50px -20px ink/22</div></div>
+      <div class="token"><div class="k">Glassmorphism</div><div class="v">bg blanco/50 + blur(14px)</div></div>
+      <div class="token"><div class="k">Marquee</div><div class="v">42s desktop / 30s móvil</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Brand Kit · Taller online “Aprende y monetiza con Canva + Claude”. Fuentes: Playfair Display, Inter y Dancing Script (Google Fonts). Iconos: Lucide.</p>
+  </div>
+</footer>
+
+<script>
+  // Spark SVG (rayos)
+  (function(){
+    const rays=[1,.72,.92,.66,1,.74,.9,.68,.98,.7,.88];
+    let s="";rays.forEach((r,i)=>{const len=7+r*40,a=i*(360/rays.length);
+      s+=`<rect x="46.9" y="${50-len}" width="6.2" height="${len}" rx="3.1" transform="rotate(${a} 50 50)"/>`;});
+    document.querySelectorAll(".rays").forEach(g=>g.innerHTML=s);
+  })();
+
+  // Paleta
+  const COLORS=[
+    ["Blanco","#FFFFFF","Fondo base","--white"],
+    ["Negro carbón","#17141D","Texto principal","--ink"],
+    ["Texto secundario","#6F6A76","Párrafos / muted","--muted"],
+    ["Lavanda","#F4F0FF","Fondo secundario","--lavender"],
+    ["Morado","#5B21B6","Marca / Canva","--purple"],
+    ["Morado profundo","#312E81","Secciones oscuras","--purple-deep"],
+    ["Acento Claude","#D97757","CTA / destellos","--claude"],
+    ["Hover CTA","#C9684B","Hover del CTA","--claude-hover"],
+    ["Violeta","#7C3AED","Gradientes","--violet"],
+    ["Índigo","#4338CA","Gradiente final","--indigo"]
+  ];
+  document.getElementById("swatches").innerHTML=COLORS.map(([n,hex,role,tok])=>{
+    const dark=["#FFFFFF","#F4F0FF"].includes(hex);
+    return `<div class="sw" data-hex="${hex}">
+      <div class="chip" style="background:${hex};${dark?'border-bottom:1px solid #eee':''}"></div>
+      <div class="meta"><div class="name">${n}</div><div class="hex">${hex}</div><div class="role">${role} · <code style="font-size:.72rem">${tok}</code></div></div>
+    </div>`;}).join("");
+
+  document.querySelectorAll(".sw").forEach(sw=>{
+    sw.addEventListener("click",()=>{
+      const hex=sw.dataset.hex;
+      navigator.clipboard?.writeText(hex);
+      const h=sw.querySelector(".hex");const old=h.textContent;h.textContent="¡Copiado!";h.classList.add("copied");
+      setTimeout(()=>{h.textContent=old;h.classList.remove("copied");},1100);
+    });
+  });
+
+  // Gradientes
+  const GRADS=[
+    ["Texto Canva + Claude","linear-gradient(120deg,#5b21b6,#7c3aed 45%,#4f46e5)"],
+    ["Fondo hero","radial-gradient(120% 90% at 50% -10%,#F4F0FF,#FBFAFF 45%,#FFFFFF)"],
+    ["CTA final","linear-gradient(140deg,#312E81,#4C1D95 40%,#5B21B6 70%,#4338CA)"],
+    ["Botón destellos","linear-gradient(90deg,#5B21B6,#7c3aed 45%,#D97757)"]
+  ];
+  document.getElementById("grads").innerHTML=GRADS.map(([n,css])=>`
+    <div class="gr"><div class="band" style="background:${css}"></div>
+    <div class="meta"><div class="name">${n}</div><div class="css">${css}</div></div></div>`).join("");
+</script>
+</body>
+</html>
