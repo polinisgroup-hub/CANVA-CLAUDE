@@ -349,6 +349,16 @@
   .pin-stack i{display:block;height:20px;border-radius:5px;margin-bottom:5px}
   .pin-tall{grid-column:1/-1}
 
+  /* ---------- tips grid ---------- */
+  .tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:640px){.tips-grid{grid-template-columns:1fr}}
+  .tipc{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:16px 18px;box-shadow:var(--shadow);transition:transform .16s ease,box-shadow .16s ease}
+  .tipc:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .tipc .emo{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:var(--lav);display:grid;place-items:center;font-size:1.3rem}
+  .tipc p{font-size:.94rem;line-height:1.5;color:#3a3540}
+  .tipc p b{color:var(--ink)}
+
   /* ---------- final / cta ---------- */
   .final{background:linear-gradient(155deg,#17141D,#211b33 60%,#312E81);color:#fff;border-radius:26px;
     padding:44px 40px;margin:20px 0 0;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
@@ -401,6 +411,7 @@
       <a href="#carruseles">Carruseles</a>
       <a href="#producto">Producto digital</a>
       <a href="#netlify">Publicar</a>
+      <a href="#tips">Tips</a>
     </nav>
   </div>
 </header>
@@ -546,6 +557,40 @@ Mi objetivo en Instagram es: <span class="var">[especificar]</span>.</p>
     <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
     <div><div class="who">Tip</div><div class="tt">Edítalo antes de enviarlo: los espacios de <b>“quién soy”</b> y los <span style="color:var(--claude);font-weight:700">[especificar]</span> son tuyos. Pídele 2 versiones —una emocional y una directa— y quédate con la que suene a ti al leerla en alto.</div></div>
   </div>
+
+  <p class="lead" style="margin-top:26px">Con tu manifiesto y tu paleta, pídele a Claude tu <b>kit de marca visual</b>: un moodboard interactivo con colores, tipografías, arquetipos y tu manifiesto, todo en un mismo lugar. <b>Este es, literalmente, el punto de partida de tu marca personal</b> — de aquí sale todo lo demás.</p>
+
+  <div class="prompt sm rv">
+    <div class="phead">
+      <span class="pl">Prompt del kit de marca visual · Moodboard</span>
+      <span class="pnum">02</span>
+    </div>
+    <p class="code">Actúa como estratega de marca personal + diseñador de identidad visual, experto en estética quiet luxury. Créame un MOODBOARD INTERACTIVO en HTML autocontenido (logo e imágenes en base64, que funcione sin internet) para mi marca personal.
+
+TE COMPARTO MI MARCA:
+· Manifiesto: <span class="var">[pega tu manifiesto]</span>
+· Cliente ideal: <span class="var">[quién es, qué sueña, qué le duele]</span>
+· Tono de marca: <span class="var">[cercano, elegante, honesto…]</span>
+· Paleta (nombre + HEX): <span class="var">[color 1 #___, color 2 #___, color 3 #___]</span>
+· Tipografías: principal <span class="var">[títulos]</span> / secundaria <span class="var">[texto]</span>
+· Logo y fotos de referencia: <span class="var">[adjuntos]</span>
+· Emoji de marca: <span class="var">[✨]</span>
+
+EL MOODBOARD DEBE INCLUIR:
+1. <span class="kw">Hero:</span> logo centrado sobre el color principal + mi frase de marca.
+2. <span class="kw">Esencia:</span> personalidad + arquetipos de marca de Carl Jung (los 12). Identifica mi arquetipo principal y secundario y explícalos en 1 línea.
+3. <span class="kw">Kit de marca:</span> cada color en una tarjeta con nombre + HEX y un botón para COPIAR (Clipboard API + respaldo execCommand para que funcione en local).
+4. <span class="kw">Tipografías</span> con ejemplos reales (si alguna no existe, la más parecida de Google Fonts y avísame cuál).
+5. <span class="kw">Moodboard</span> tipo masonry con mis fotos + etiqueta al pasar el cursor.
+6. <span class="kw">Manifiesto</span> completo e INTACTO, centrado, en la serif.
+7. <span class="kw">Highlights</span> de Instagram: nombres + íconos minimalistas.
+
+REGLAS: responsive, solo mis colores/tipografías, quiet luxury (neutros, aire, cero saturación). Verifica que el manifiesto quedó idéntico y que los botones de copiar funcionan. Ofréceme convertirlo a PDF A4.</p>
+    <div class="copybar">
+      <button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copiar prompt</span></button>
+      <span class="copyhint">Tu marca completa, visual y en un solo lugar</span>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -661,7 +706,7 @@ Mi objetivo en Instagram es: <span class="var">[especificar]</span>.</p>
   <div class="prompt rv">
     <div class="phead">
       <span class="pl">Prompt del carrusel</span>
-      <span class="pnum">02</span>
+      <span class="pnum">03</span>
     </div>
     <p class="code">Crea un carrusel de Instagram de <span class="var">[nº de slides]</span> slides sobre <span class="var">[tema]</span> para <span class="var">[audiencia]</span>, con un tono <span class="var">[tono]</span>.
 
@@ -707,32 +752,33 @@ Antes de diseñar, hazme las preguntas que necesites.</p>
   <div class="prompt sm rv">
     <div class="phead">
       <span class="pl">Prompt del producto digital</span>
-      <span class="pnum">03</span>
+      <span class="pnum">04</span>
     </div>
-    <p class="code">Actúa como estratega de marca personal + diseñador de identidad visual, experto en estética quiet luxury. Créame un MOODBOARD INTERACTIVO en HTML autocontenido (logo e imágenes en base64, que funcione sin internet) para mi marca personal.
+    <p class="code">Actúa como diseñador UX/UI y desarrollador front-end. Quiero convertir este producto digital en una experiencia web interactiva.
 
-TE COMPARTO MI MARCA:
-· Manifiesto: <span class="var">[pega tu manifiesto]</span>
-· Cliente ideal: <span class="var">[quién es, qué sueña, qué le duele]</span>
-· Tono de marca: <span class="var">[cercano, elegante, honesto…]</span>
-· Paleta (nombre + HEX): <span class="var">[color 1 #___, color 2 #___, color 3 #___]</span>
-· Tipografías: principal <span class="var">[títulos]</span> / secundaria <span class="var">[texto]</span>
-· Logo y fotos de referencia: <span class="var">[adjuntos]</span>
-· Emoji de marca: <span class="var">[✨]</span>
+<span class="kw">PRODUCTO</span>
+<span class="var">[DESCRIPCIÓN]</span>
 
-EL MOODBOARD DEBE INCLUIR:
-1. <span class="kw">Hero:</span> logo centrado sobre el color principal + mi frase de marca.
-2. <span class="kw">Esencia:</span> personalidad + arquetipos de marca de Carl Jung (los 12). Identifica mi arquetipo principal y secundario y explícalos en 1 línea.
-3. <span class="kw">Kit de marca:</span> cada color en una tarjeta con nombre + HEX y un botón para COPIAR (Clipboard API + respaldo execCommand para que funcione en local).
-4. <span class="kw">Tipografías</span> con ejemplos reales (si alguna no existe, la más parecida de Google Fonts y avísame cuál).
-5. <span class="kw">Moodboard</span> tipo masonry con mis fotos + etiqueta al pasar el cursor.
-6. <span class="kw">Manifiesto</span> completo e INTACTO, centrado, en la serif.
-7. <span class="kw">Highlights</span> de Instagram: nombres + íconos minimalistas.
+<span class="kw">AUDIENCIA Y OBJETIVO</span>
+<span class="var">[AUDIENCIA]</span> · quiero que consiga <span class="var">[RESULTADO]</span>
 
-REGLAS: responsive, solo mis colores/tipografías, quiet luxury (neutros, aire, cero saturación). Verifica que el manifiesto quedó idéntico y que los botones de copiar funcionan. Ofréceme convertirlo a PDF A4.</p>
+<span class="kw">BRANDING</span> — adjunto mi Kit de Contexto de Marca.
+Paleta: <span class="var">[COLORES]</span> · Tipografías: <span class="var">[TIPOGRAFÍAS]</span> · Estética: <span class="var">[ESTILO]</span>
+
+<span class="kw">CONTENIDO</span>
+<span class="var">[CONTENIDO COMPLETO]</span>
+
+<span class="kw">EXPERIENCIA</span>
+Quiero que el usuario pueda: <span class="var">[ACCIONES]</span>
+Por ejemplo: navegar entre secciones, completar ejercicios, marcar listas, ver su progreso.
+
+<span class="kw">DISEÑO</span>
+Premium, responsive, mobile-first, fácil de navegar y accesible. Usa HTML/CSS/JavaScript, sin dependencias innecesarias. Quiero poder publicarlo como sitio estático.
+
+Primero crea la estructura. Después el artefacto funcional. Prueba las interacciones antes de finalizar.</p>
     <div class="copybar">
       <button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copiar prompt</span></button>
-      <span class="copyhint">Ajusta el resultado a tu ejercicio: portada → bienvenida → bases → ejercicio → cierre</span>
+      <span class="copyhint">Rellena cada bloque con lo tuyo y adjunta tu kit de marca</span>
     </div>
   </div>
 </section>
@@ -779,6 +825,30 @@ REGLAS: responsive, solo mis colores/tipografías, quiet luxury (neutros, aire, 
   <div class="tip">
     <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
     <div><div class="who">Un solo sistema, tres salidas</div><div class="tt">La misma marca te sirve para un carrusel, un producto digital y una página en vivo. Estrategia primero, IA segundo, diseño tercero: ahora te toca a ti.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═════════ TIPS · ELEVAR DISEÑOS ═════════ -->
+<section class="blk rv" id="tips">
+  <div class="shead">
+    <div class="idx orange"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg></div>
+    <div class="meta">
+      <div class="eyebrow">Para que se vean elevados</div>
+      <h2>Tips para <span class="p">subir de nivel</span> tus diseños</h2>
+    </div>
+  </div>
+  <p class="lead">Pequeños ajustes en cómo le pides a Claude que marcan la diferencia entre un diseño “bonito” y uno que se ve premium.</p>
+  <div class="tips-grid">
+    <div class="tipc"><span class="emo">🎨</span><p><b>Nómbrale la estética:</b> “quiet luxury”, “editorial”, “minimalista”.</p></div>
+    <div class="tipc"><span class="emo">🎯</span><p><b>Pásale siempre tu kit de marca completo</b> (colores en HEX y tipografías).</p></div>
+    <div class="tipc"><span class="emo">🚫</span><p><b>Dile lo que NO quieres.</b> Esto es lo que más eleva el diseño.</p></div>
+    <div class="tipc"><span class="emo">📏</span><p><b>Pídele que respete la jerarquía y los márgenes.</b></p></div>
+    <div class="tipc"><span class="emo">📐</span><p><b>Especifica el formato:</b> 16:9 presentaciones, 4:5 carrusel, 9:16 historias.</p></div>
+    <div class="tipc"><span class="emo">💾</span><p><b>Pídelo exportado en HTML.</b> Y si es carrusel, en PNG.</p></div>
+    <div class="tipc"><span class="emo">⚡</span><p><b>Usa el modelo Opus cuando sea diseño.</b> Ahí está la diferencia.</p></div>
+    <div class="tipc"><span class="emo">🔄</span><p><b>Si no te gustó, corrige todo en un solo prompt.</b> No empieces de cero.</p></div>
   </div>
 </section>
 
