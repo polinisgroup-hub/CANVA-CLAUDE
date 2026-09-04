@@ -99,8 +99,8 @@ export const WorkshopHero = forwardRef<HTMLElement>(function WorkshopHero(
         <motion.div {...rise(0)}>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/50 px-4 py-1.5 text-xs font-medium text-muted shadow-sm backdrop-blur-md sm:text-sm">
             <span className="text-claude" aria-hidden="true">✦</span>
-            <span className="hidden sm:inline">4 clases pregrabadas + 1 clase EN VIVO</span>
-            <span className="sm:hidden">4 clases + 1 clase EN VIVO</span>
+            <span className="hidden sm:inline">5 clases pregrabadas · 2–3 h cada una</span>
+            <span className="sm:hidden">5 clases pregrabadas</span>
             <span className="hidden text-ink/20 sm:inline" aria-hidden="true">·</span>
             <span className="hidden font-semibold text-ink/70 sm:inline">Canva + Claude</span>
           </span>
@@ -178,7 +178,7 @@ export const WorkshopHero = forwardRef<HTMLElement>(function WorkshopHero(
                 <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.16em] text-muted">
                   <span>{workshopConfig.recordedClasses} clases pregrabadas</span>
                   <span className="text-claude" aria-hidden="true">•</span>
-                  <span>1 clase EN VIVO</span>
+                  <span>{workshopConfig.classDuration} cada una</span>
                   <span className="text-claude" aria-hidden="true">•</span>
                   <span className="text-ink">{priceLabel}</span>
                 </p>
@@ -195,7 +195,7 @@ export const WorkshopHero = forwardRef<HTMLElement>(function WorkshopHero(
               <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.16em] text-muted">
                 <span>{workshopConfig.recordedClasses} clases pregrabadas</span>
                 <span className="text-claude" aria-hidden="true">•</span>
-                <span>1 clase EN VIVO</span>
+                <span>{workshopConfig.classDuration} cada una</span>
                 <span className="text-claude" aria-hidden="true">•</span>
                 <span className="text-ink">{priceLabel}</span>
               </p>

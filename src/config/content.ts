@@ -222,12 +222,12 @@ export const faqs: FAQ[] = [
   { q: '¿Necesito experiencia en Canva?', a: 'No. Puedes comenzar desde cero.' },
   {
     q: '¿Cuántas clases incluye?',
-    a: '4 clases pregrabadas + 1 clase especial EN VIVO de Canva + Claude.',
+    a: '5 clases pregrabadas de Canva + Claude, de 2–3 h cada una aproximadamente.',
   },
   { q: '¿Cuánto cuesta?', a: '$97 USD, pago único.' },
   {
-    q: '¿Las cuatro clases son en vivo?',
-    a: 'No. Las cuatro clases principales están pregrabadas. Además tendrás una clase especial EN VIVO.',
+    q: '¿Las clases son en vivo?',
+    a: 'No. Las 5 clases están pregrabadas (2–3 h cada una), así avanzas a tu propio ritmo: pausa, practica y vuelve cuando quieras.',
   },
   {
     q: '¿Qué veremos con Canva + Claude?',

@@ -44,8 +44,8 @@ export function FinalCTA() {
 
           <Reveal delay={0.12}>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-              4 clases pregrabadas + 1 clase especial EN VIVO para aprender
-              Canva, potenciar tu proceso creativo con Claude y crear contenido
+              5 clases pregrabadas de 2–3 h cada una para aprender Canva,
+              potenciar tu proceso creativo con Claude y crear contenido
               visual que represente tus ideas.
             </p>
           </Reveal>

@@ -5,7 +5,7 @@ import { workshopConfig } from '../../config/workshop'
 
 const navLinks = [
   { href: '#contenido', label: 'Contenido' },
-  { href: '#clase-en-vivo', label: 'Clase en vivo' },
+  { href: '#clase-estrella', label: 'Clase estrella' },
   { href: '#incluye', label: 'Incluye' },
   { href: '#faq', label: 'FAQ' },
 ]

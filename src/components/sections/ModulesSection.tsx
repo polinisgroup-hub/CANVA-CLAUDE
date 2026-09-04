@@ -16,7 +16,7 @@ export function ModulesSection() {
           index="06"
           eyebrow="Contenido del taller"
           title="Tu ruta para pasar de principiante a creador."
-          subtitle="4 clases pregrabadas para aprender a tu ritmo + una experiencia especial EN VIVO donde llevaremos Canva al siguiente nivel utilizando Claude."
+          subtitle="5 clases pregrabadas de 2–3 h cada una para aprender a tu ritmo y llevar Canva al siguiente nivel utilizando Claude."
           className="max-w-3xl"
         />
 

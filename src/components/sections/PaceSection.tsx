@@ -1,14 +1,14 @@
-import { Pause, PlayCircle, Repeat, Radio } from 'lucide-react'
+import { Pause, PlayCircle, Repeat, Clock } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 import { RevealStagger, RevealItem } from '../ui/RevealText'
 
 const badges: { icon: LucideIcon; label: string }[] = [
-  { icon: PlayCircle, label: '4 clases pregrabadas' },
+  { icon: PlayCircle, label: '5 clases pregrabadas' },
   { icon: Repeat, label: 'Nivel principiante' },
   { icon: Pause, label: 'Aprende a tu ritmo' },
-  { icon: Radio, label: 'Clase especial en vivo' },
+  { icon: Clock, label: '2–3 h por clase' },
 ]
 
 export function PaceSection() {
@@ -20,7 +20,7 @@ export function PaceSection() {
             index="12"
             eyebrow="Aprende a tu ritmo"
             title="Aprende. Pausa. Practica. Vuelve a intentarlo."
-            subtitle="Las cuatro clases principales están pregrabadas para que puedas avanzar a tu propio ritmo, detenerte, practicar y volver a cada explicación cuando lo necesites. Después llevaremos todo al siguiente nivel en nuestra clase especial EN VIVO de Canva + Claude."
+            subtitle="Las 5 clases están pregrabadas (2–3 h cada una) para que puedas avanzar a tu propio ritmo, detenerte, practicar y volver a cada explicación cuando lo necesites. Todo el taller de Canva + Claude, disponible cuando tú quieras."
           />
 
           <RevealStagger className="grid grid-cols-2 gap-4">

@@ -7,7 +7,7 @@ const columns = [
     title: 'Taller',
     links: [
       { href: '#contenido', label: 'Contenido' },
-      { href: '#clase-en-vivo', label: 'Clase en vivo' },
+      { href: '#clase-estrella', label: 'Clase estrella' },
       { href: '#faq', label: 'FAQ' },
       { href: '#oferta', label: 'Comprar' },
     ],

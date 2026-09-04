@@ -37,7 +37,7 @@ export function InstructorsSection() {
               Impartido por <span className="grad-canva">{title}</span>.
             </>
           }
-          subtitle="Te guiarán paso a paso en las 4 clases pregrabadas y en la clase especial EN VIVO de Canva + Claude."
+          subtitle="Te guiarán paso a paso en las 5 clases pregrabadas de Canva + Claude, de 2–3 h cada una."
           align="center"
           className="mx-auto max-w-2xl"
         />

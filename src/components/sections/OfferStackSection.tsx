@@ -1,4 +1,4 @@
-import { PlayCircle, Radio, Check } from 'lucide-react'
+import { PlayCircle, Check } from 'lucide-react'
 import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Reveal, RevealStagger, RevealItem } from '../ui/RevealText'
@@ -44,13 +44,13 @@ export function OfferStackSection() {
             <RevealItem>
               <div className="flex items-center gap-4 rounded-2xl bg-ink p-5 text-white ring-1 ring-white/10">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-claude">
-                  <Radio className="h-5 w-5" aria-hidden="true" />
+                  <PlayCircle className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <div className="min-w-0">
                   <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-claude">
-                    Clase especial EN VIVO
+                    Clase 05 · La clase estrella
                   </span>
-                  <span className="block font-medium">Canva + Claude</span>
+                  <span className="block font-medium">Canva + Claude en acción</span>
                 </div>
               </div>
             </RevealItem>
@@ -68,14 +68,11 @@ export function OfferStackSection() {
                   <br />
                   pregrabadas
                 </span>
-                <span className="mx-2 text-2xl text-claude">+</span>
-                <span className="tabular text-2xl font-bold text-claude">
-                  {workshopConfig.liveClasses}
-                </span>
+                <span className="mx-2 text-2xl text-claude">·</span>
                 <span className="text-left uppercase leading-tight tracking-wide">
-                  clase
+                  {workshopConfig.classDuration}
                   <br />
-                  EN VIVO
+                  cada una
                 </span>
               </div>
 
@@ -98,7 +95,7 @@ export function OfferStackSection() {
               </PrimaryCTA>
 
               <ul className="mt-6 space-y-2 text-left">
-                {['Acceso a las 4 clases pregrabadas', 'Clase especial EN VIVO Canva + Claude', 'Aprende a tu propio ritmo'].map(
+                {['Acceso a las 5 clases pregrabadas', '2–3 h de contenido por clase', 'Aprende a tu propio ritmo'].map(
                   (item) => (
                     <li
                       key={item}

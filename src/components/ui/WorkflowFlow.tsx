@@ -10,7 +10,7 @@ interface WorkflowFlowProps {
 
 /**
  * Renderiza un flujo IDEA → CLAUDE → … → RESULTADO como chips con flechas.
- * Reutilizado en la clase EN VIVO y en la sección de workflow.
+ * Reutilizado en la clase estrella y en la sección de workflow.
  */
 export function WorkflowFlow({
   steps,

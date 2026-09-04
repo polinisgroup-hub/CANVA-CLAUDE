@@ -45,6 +45,8 @@ export interface WorkshopConfig {
   liveTime: string // p. ej. "Por confirmar" o "19:00 (GMT-5)"
   recordedClasses: number
   liveClasses: number
+  /** Duración aproximada de cada clase, p. ej. "2–3 h". */
+  classDuration: string
   instructors: Instructor[]
   whatsapp: WhatsAppConfig
 }
@@ -62,12 +64,13 @@ export const workshopConfig: WorkshopConfig = {
   // Enlace de checkout real (Beacons). Todos los CTA lo usan.
   checkoutUrl: 'https://shop.beacons.ai/napolinip/274ec424-6f39-492d-aa15-8fdcc087b76a',
 
-  // ⚠️ EDITAR: fecha y hora reales de la clase EN VIVO.
+  // Taller 100% pregrabado (sin clase en vivo).
   liveDate: 'Por confirmar',
   liveTime: 'Por confirmar',
 
-  recordedClasses: 4,
-  liveClasses: 1,
+  recordedClasses: 5,
+  liveClasses: 0,
+  classDuration: '2–3 h',
 
   instructors: [
     { name: 'Natasha Polini', role: 'Instructora', whatsapp: '13464255205' },

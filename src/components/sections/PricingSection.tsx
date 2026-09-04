@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import NumberFlow from '@number-flow/react'
-import { CheckCheck, PlayCircle, Radio, ShieldCheck } from 'lucide-react'
+import { CheckCheck, PlayCircle, Clock, ShieldCheck } from 'lucide-react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { TimelineContent } from '@/components/ui/timeline-animation'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
@@ -17,7 +17,7 @@ import { getCheckoutUrl, workshopConfig } from '../../config/workshop'
 export function PricingSection() {
   const pricingRef = useRef<HTMLDivElement>(null)
   const inView = useInView(pricingRef, { once: true, margin: '-120px' })
-  const { price, compareAtPrice, currency, recordedClasses, liveClasses } =
+  const { price, compareAtPrice, currency, recordedClasses, classDuration } =
     workshopConfig
   const href = getCheckoutUrl()
   const isExternal = /^https?:\/\//.test(href)
@@ -34,7 +34,7 @@ export function PricingSection() {
 
   const includes = [
     `${recordedClasses} clases pregrabadas`,
-    `${liveClasses} clase especial EN VIVO · Canva + Claude`,
+    `${classDuration} de contenido por clase`,
     'Aprende a tu propio ritmo',
     'Acceso de por vida',
     'Sin experiencia previa',
@@ -90,7 +90,7 @@ export function PricingSection() {
               </div>
               <p className="mb-2 text-sm text-muted">
                 Aprende a diseñar con Canva y a potenciar tus ideas con Claude.
-                4 clases pregrabadas + 1 clase especial EN VIVO.
+                5 clases pregrabadas de 2–3 h cada una.
               </p>
 
               {compareAtPrice && (
@@ -162,7 +162,7 @@ export function PricingSection() {
             <PlayCircle className="h-4 w-4 text-purple" /> {recordedClasses} pregrabadas
           </span>
           <span className="inline-flex items-center gap-2">
-            <Radio className="h-4 w-4 text-claude" /> {liveClasses} EN VIVO
+            <Clock className="h-4 w-4 text-claude" /> {classDuration} cada una
           </span>
         </motion.div>
       </div>

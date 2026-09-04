@@ -1,4 +1,4 @@
-import { Radio, ArrowRight } from 'lucide-react'
+import { PlayCircle, ArrowRight } from 'lucide-react'
 import { Section } from '../ui/Section'
 import { Reveal } from '../ui/RevealText'
 import { BrandLockup } from '../ui/BrandLockup'
@@ -6,13 +6,13 @@ import { WorkflowFlow } from '../ui/WorkflowFlow'
 import { liveBlocks } from '../../config/content'
 
 /**
- * Clase especial EN VIVO — sección protagonista.
+ * Clase estrella (pregrabada) — sección protagonista.
  * Atmósfera oscura (violeta profundo) con glows azul/violeta y acentos Claude.
  * Enfoque: DISEÑO + IA + MARCA PERSONAL + CONTENIDO VISUAL + PRODUCTOS DIGITALES.
  */
 export function LiveClassSection() {
   return (
-    <Section id="clase-en-vivo" tone="dark" spacing="xl" className="isolate">
+    <Section id="clase-estrella" tone="dark" spacing="xl" className="isolate">
       {/* Glows atmosféricos */}
       <div
         className="pointer-events-none absolute -left-32 top-10 -z-10 h-96 w-96 rounded-full bg-purple/40 blur-[120px]"
@@ -32,8 +32,8 @@ export function LiveClassSection() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/80 backdrop-blur">
-              <Radio className="h-3.5 w-3.5 text-claude" aria-hidden="true" />
-              Clase especial EN VIVO
+              <PlayCircle className="h-3.5 w-3.5 text-claude" aria-hidden="true" />
+              La clase estrella · Canva + Claude
             </span>
           </Reveal>
 
@@ -66,7 +66,7 @@ export function LiveClassSection() {
           </Reveal>
         </div>
 
-        {/* Bloques de la clase en vivo */}
+        {/* Bloques de la clase estrella */}
         <div className="mt-16 grid gap-5 lg:grid-cols-2">
           {liveBlocks.map((block, i) => (
             <Reveal key={block.id} delay={i * 0.05}>
