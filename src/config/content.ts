@@ -224,7 +224,7 @@ export const faqs: FAQ[] = [
     q: '¿Cuántas clases incluye?',
     a: '4 clases pregrabadas + 1 clase especial EN VIVO de Canva + Claude.',
   },
-  { q: '¿Cuánto cuesta?', a: '$47 USD, pago único.' },
+  { q: '¿Cuánto cuesta?', a: '$97 USD, pago único.' },
   {
     q: '¿Las cuatro clases son en vivo?',
     a: 'No. Las cuatro clases principales están pregrabadas. Además tendrás una clase especial EN VIVO.',

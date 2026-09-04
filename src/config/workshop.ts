@@ -53,9 +53,9 @@ export const workshopConfig: WorkshopConfig = {
   name: 'Aprende y monetiza con Canva',
   subtitle: 'Taller online',
   differentiator: 'Canva + Claude',
-  price: 47,
-  // El precio actual es $47. Se muestra como promo respecto a $97.
-  compareAtPrice: 97,
+  price: 97,
+  // Precio único actual: $97. Sin promo/tachado (compareAtPrice: null).
+  compareAtPrice: null,
   currency: 'USD',
   paymentType: 'Pago único',
 
@@ -98,5 +98,5 @@ export function isInternalCheckout(): boolean {
   return getCheckoutUrl().startsWith('#')
 }
 
-/** Precio formateado, p. ej. "$47 USD". */
+/** Precio formateado, p. ej. "$97 USD". */
 export const priceLabel = `$${workshopConfig.price} ${workshopConfig.currency}`

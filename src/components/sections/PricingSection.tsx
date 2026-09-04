@@ -11,7 +11,7 @@ import { getCheckoutUrl, workshopConfig } from '../../config/workshop'
 /**
  * Bloque de oferta — basado en el componente de pricing de 21st.dev
  * (VerticalCutReveal + TimelineContent + NumberFlow + tarjeta con CTA
- * degradado), adaptado a la oferta ÚNICA del taller: $47, pago único.
+ * degradado), adaptado a la oferta ÚNICA del taller: $97, pago único.
  * Sin planes ni facturación mensual/anual (no aplican).
  */
 export function PricingSection() {
@@ -85,7 +85,7 @@ export function PricingSection() {
                   Taller Canva + Claude
                 </h3>
                 <span className="rounded-full bg-claude px-3 py-1 text-xs font-semibold text-white">
-                  Promo
+                  {compareAtPrice ? 'Promo' : 'Pago único'}
                 </span>
               </div>
               <p className="mb-2 text-sm text-muted">
