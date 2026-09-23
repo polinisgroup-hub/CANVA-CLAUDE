@@ -25,6 +25,8 @@ export interface WhatsAppConfig {
   /** Número con código de país, solo dígitos. Vacío = sin número aún. */
   number: string
   message: string
+  /** Enlace directo de WhatsApp (p. ej. wa.me/message/...). Si existe, tiene prioridad sobre `number`. */
+  link?: string
 }
 
 export interface WorkshopConfig {
@@ -86,6 +88,7 @@ export const workshopConfig: WorkshopConfig = {
 
 /** Enlace de WhatsApp (wa.me) con mensaje prellenado. */
 export function getWhatsAppUrl(): string {
+  if (workshopConfig.whatsapp.link) return workshopConfig.whatsapp.link
   const num = (workshopConfig.whatsapp.number || '').replace(/\D/g, '')
   const msg = encodeURIComponent(workshopConfig.whatsapp.message || '')
   return num ? `https://wa.me/${num}?text=${msg}` : `https://wa.me/?text=${msg}`
